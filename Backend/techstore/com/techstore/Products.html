@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Premium IT Accessories</title>
+    <link rel="stylesheet" href="C:\Users\Owner\OneDrive\Documents\vscode Projects\java web\Styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-laptop"></i>
+                <h1 id="rotating-title">NextGen Technologies</h1>
+            </div>
+            <button class="hamburger" onclick="toggleMobileMenu()">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="Products.html">Products</a>
+                <a href="Services.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <div class="search-icon" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="wishlist-icon">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="cart-icon-header" onclick="goToCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="user-icon">
+                    <i class="far fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Premium IT Accessories</h2>
+            <p>Discover the latest tech at unbeatable prices</p>
+            <div class="search-bar" id="heroSearch">
+                <input type="text" placeholder="Search products..." id="searchInput" onkeypress="if(event.key === 'Enter') searchProductsStatic()">
+                <button onclick="searchProductsStatic()">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Navigation -->
+    <nav class="category-nav">
+        <div class="category-nav-container">
+            <div class="category-dropdown">
+                <button class="category-btn" onclick="scrollToSection('hp-products')">
+                    HP Products <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#hp-laptops" onclick="scrollToSection('hp-laptops')">
+                        <i class="fas fa-laptop"></i> Laptops
+                    </a>
+                    <a href="#hp-desktops" onclick="scrollToSection('hp-desktops')">
+                        <i class="fas fa-desktop"></i> Desktops
+                    </a>
+                    <a href="#hp-workstations" onclick="scrollToSection('hp-workstations')">
+                        <i class="fas fa-server"></i> Workstations
+                    </a>
+                    <a href="#hp-all-in-ones" onclick="scrollToSection('hp-all-in-ones')">
+                        <i class="fas fa-tv"></i> All in Ones
+                    </a>
+                    <a href="#hp-monitors" onclick="scrollToSection('hp-monitors')">
+                        <i class="fas fa-desktop"></i> Monitors
+                    </a>
+                    <a href="#hp-printers" onclick="scrollToSection('hp-printers')">
+                        <i class="fas fa-print"></i> Printers
+                    </a>
+                    <a href="#hp-servers" onclick="scrollToSection('hp-servers')">
+                        <i class="fas fa-server"></i> Servers
+                    </a>
+                    <a href="#hp-server-accessories" onclick="scrollToSection('hp-server-accessories')">
+                        <i class="fas fa-cog"></i> Server Accessories
+                    </a>
+                    <a href="#hp-accessories" onclick="scrollToSection('hp-accessories')">
+                        <i class="fas fa-mouse"></i> Accessories
+                    </a>
+                    <a href="#hp-toners" onclick="scrollToSection('hp-toners')">
+                        <i class="fas fa-fill-drip"></i> Toners & Cartridges
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HP Products Section -->
+    <section class="category" id="hp-products">
+        <div class="category-header">
+            <h3><i class="fas fa-laptop"></i> HP Products</h3>
+            <p>Explore our comprehensive range of HP technology solutions</p>
+        </div>
+
+        <!-- HP Laptops Section -->
+        <div id="hp-laptops" class="product-section">
+            <div class="section-title">
+                <h4><i class="fas fa-laptop"></i> HP Laptops</h4>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" onclick="filterProducts('all')">All</button>
+                    <button class="filter-btn" onclick="filterProducts('notebook')">Notebook</button>
+                    <button class="filter-btn" onclick="filterProducts('probook')">ProBook</button>
+                    <button class="filter-btn" onclick="filterProducts('elitebook')">EliteBook</button>
+                </div>
+            </div>
+            
+            <div class="card-container">
+                <div class="card" data-category="notebook">
+                    <div class="card-badge">New</div>
+                    <img src="Images/hp-laptop-1.jpg" alt="HP Laptop" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5>HP NoteBook15 DW3037NIA</h5>
+                        <p>Core i7-1135G7 quad | 8GB RAM | 512GB SSD | 15.6" Inches | WIN 10 H | Jet Black Mesh Knit</p>
+                        <div class="card-footer">
+                            <div class="cost">KES 78,000</div>
+                            <button class="add-to-cart" onclick="addToCart(this, 'HP NoteBook15 DW3037NIA', 78000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="notebook">
+                    <img src="Images/hp-laptop-2.jpg" alt="HP Laptop" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5>HP NoteBook15 DW1279NIA</h5>
+                        <p>Core i5-10210U quad | 8GB RAM | 512GB SSD | 15.6" Inches | FREE DOS | Jet Black Mesh Knit</p>
+                        <div class="card-footer">
+                            <div class="cost">KES 54,000</div>
+                            <button class="add-to-cart" onclick="addToCart(this, 'HP NoteBook15 DW1279NIA', 54000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="notebook">
+                    <img src="Images/hp-laptop-3.jpg" alt="HP Laptop" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5>HP NoteBook 15 DW211NIA</h5>
+                        <p>Core i7-1165G7 quad | 8GB RAM | 512GB SSD | 15.6" Inches | FREE DOS | Jet Black Mesh Knit</p>
+                        <div class="card-footer">
+                            <div class="cost">KES 78,000</div>
+                            <button class="add-to-cart" onclick="addToCart(this, 'HP NoteBook 15 DW211NIA', 78000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="notebook">
+                    <img src="Images/hp-laptop-4.jpg" alt="HP Laptop" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5>HP NoteBook 14s</h5>
+                        <p>Core i7 1165G7 quad | 8GB RAM | 512GB SSD | 14" Inches | FREE DOS | Jet Black Mesh Knit</p>
+                        <div class="card-footer">
+                            <div class="cost">KES 80,000</div>
+                            <button class="add-to-cart" onclick="addToCart(this, 'HP NoteBook 14s', 80000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="probook">
+                    <div class="card-badge">Business</div>
+                    <img src="Images/hp-laptop-5.jpg" alt="HP Laptop" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5>HP ProBook 440 G10</h5>
+                        <p>Core i7 | 12th Gen | 8GB RAM | 512GB SSD | 14" | Free DOS | 1 Year Warranty</p>
+                        <div class="card-footer">
+                            <div class="cost">KES 90,000</div>
+                            <button class="add-to-cart" onclick="addToCart(this, 'HP ProBook 440 G10', 90000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="probook">
+                    <img src="Images/hp-laptop-6.jpg" alt="HP Laptop" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5>HP ProBook 450 G10</h5>
+                        <p>Core i5 | 13th Gen | 8GB RAM | 512GB SSD | 15.6" | Free Dos | 1 Year Warranty</p>
+                        <div class="card-footer">
+                            <div class="cost">KES 84,500</div>
+                            <button class="add-to-cart" onclick="addToCart(this, 'HP ProBook 450 G10', 84500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="elitebook">
+                    <div class="card-badge">Premium</div>
+                    <img src="Images/hp-laptop-7.jpg" alt="HP Laptop" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5>HP EliteBook 840 G11</h5>
+                        <p>Ultra 7-155u | 16GB RAM | 512GB SSD | 14" | Win 11 Pro | 3 Year Warranty</p>
+                        <div class="card-footer">
+                            <div class="cost">KES 155,800</div>
+                            <button class="add-to-cart" onclick="addToCart(this, 'HP EliteBook 840 G11', 155800)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="elitebook">
+                    <img src="Images/hp-laptop-8.jpg" alt="HP Laptop" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5>HP EliteBook 830 G11 2 IN 1 x360</h5>
+                        <p>Intel evo Core Ultra 7-155u | 32GB RAM | 512GB SSD | 13.3" TOUCH | Win 11 Pro | 3 Year Warranty</p>
+                        <div class="card-footer">
+                            <div class="cost">KES 245,000</div>
+                            <button class="add-to-cart" onclick="addToCart(this, 'HP EliteBook 830 G11 x360', 245000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Placeholder sections for other categories -->
+        <div id="hp-desktops" class="product-section">
+            <div class="section-title">
+                <h4><i class="fas fa-desktop"></i> HP Desktops</h4>
+            </div>
+            <div class="card-container">
+                <div class="empty-section">
+                    <i class="fas fa-desktop"></i>
+                    <p>Desktop products coming soon...</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="hp-workstations" class="product-section">
+            <div class="section-title">
+                <h4><i class="fas fa-server"></i> HP Workstations</h4>
+            </div>
+            <div class="card-container">
+                <div class="empty-section">
+                    <i class="fas fa-server"></i>
+                    <p>Workstation products coming soon...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 NextGen Technologies. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script src="Main.js"></script>
+    <script src="Admin.js"></script>
+</body>
+</html>
