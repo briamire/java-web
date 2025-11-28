@@ -77,18 +77,18 @@ function toggleMobileMenu() {
 }
 
 // Toggle search bar visibility
-function toggleSearch() {
-    const heroSearch = document.getElementById('heroSearch');
-    if (heroSearch) {
-        heroSearch.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            setTimeout(() => {
-                searchInput.focus();
-            }, 500);
-        }
-    }
-}
+//function toggleSearch() {
+  //  const heroSearch = document.getElementById('heroSearch');
+  //if (heroSearch) {
+      //  heroSearch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      //  const searchInput = document.getElementById('searchInput');
+       // if (searchInput) {
+           // setTimeout(() => {
+               // searchInput.focus();
+            //}, 500);
+        //}
+    //}
+//}
 
 // Search products in static cards
 function searchProductsStatic(query) {
@@ -221,6 +221,53 @@ document.addEventListener('keydown', function(e) {
 // Initialize HP Products page specific features
 document.addEventListener('DOMContentLoaded', function() {
     initializeHPSearch();
+});
+
+
+//search bar functionality in products
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.querySelector('.search-bar input');
+    const searchButton = document.querySelector('.search-bar button');
+    const categories = document.querySelectorAll('.category');
+
+    const filterMaterials = () => {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+
+        categories.forEach(section => {
+            const cards = section.querySelectorAll('.card');
+            let hasMatches = false;
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                const isVisible = text.includes(searchTerm);
+                card.style.display = isVisible ? 'block' : 'none';
+                
+                if (isVisible) hasMatches = true;
+            });
+
+            // Show/hide entire category section
+            section.style.display = hasMatches ? 'block' : 'none';
+        });
+    };
+
+    searchButton.addEventListener('click', filterMaterials);
+    searchInput.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') filterMaterials();
+    });
+    searchInput.addEventListener('input', filterMaterials);
+
+    // Clear search and show all when empty
+    searchInput.addEventListener('input', () => {
+        if (searchInput.value === '') {
+            categories.forEach(section => {
+                section.style.display = 'block';
+                section.querySelectorAll('.card').forEach(card => {
+                    card.style.display = 'block';
+                });
+            });
+        }
+    });
 });
 
 console.log('HP Products page scripts loaded successfully!');
