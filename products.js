@@ -287,6 +287,12 @@ function openProductDetails(element) {
         closeProductDetails();
     };
     
+    // Set up WhatsApp button
+    const whatsappBtn = document.getElementById('productDetailsWhatsAppBtn');
+    whatsappBtn.onclick = function() {
+        orderOnWhatsApp(title, price, specs);
+    };
+    
     // Show overlay
     const overlay = document.getElementById('productDetailsOverlay');
     overlay.classList.add('active');
@@ -297,6 +303,31 @@ function closeProductDetails() {
     const overlay = document.getElementById('productDetailsOverlay');
     overlay.classList.remove('active');
     document.body.style.overflow = '';
+}
+
+function orderOnWhatsApp(productName, price, specs) {
+    // Your WhatsApp business number (include country code without + or spaces)
+    // Example: For Kenya +254712345678, use '254712345678'
+    const phoneNumber = '254112825702'; // Replace with your actual number
+    
+    // Create the message
+    const message = `Hi, I'm interested in ordering:
+
+*${productName}*
+${specs}
+
+Price: ${price}
+
+Please provide more information.`;
+    
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Create WhatsApp URL
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappURL, '_blank');
 }
 
 // Close on outside click

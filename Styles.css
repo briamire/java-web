@@ -1682,7 +1682,6 @@ footer {
 }
 
 
-
 /* Product Details Overlay Styles */
 .product-details-overlay {
     display: none;
@@ -1817,32 +1816,42 @@ footer {
 .product-details-price-section {
     border-top: 2px solid #e0e0e0;
     padding-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
 }
 
 .product-details-price {
     font-size: 32px;
     font-weight: bold;
     color: #6366f1;
+    margin-bottom: 20px;
 }
 
-.product-details-add-cart {
-    background: #6366f1;
-    color: white;
+.product-details-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.product-details-add-cart,
+.product-details-whatsapp {
+    flex: 1;
+    min-width: 180px;
     border: none;
-    padding: 15px 30px;
+    padding: 15px 25px;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     transition: all 0.3s ease;
     white-space: nowrap;
+}
+
+.product-details-add-cart {
+    background: #6366f1;
+    color: white;
 }
 
 .product-details-add-cart:hover {
@@ -1851,7 +1860,19 @@ footer {
     box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
 }
 
-.product-details-add-cart i {
+.product-details-whatsapp {
+    background: #25D366;
+    color: white;
+}
+
+.product-details-whatsapp:hover {
+    background: #20BA5A;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+}
+
+.product-details-add-cart i,
+.product-details-whatsapp i {
     font-size: 18px;
 }
 
@@ -1870,13 +1891,13 @@ footer {
         font-size: 26px;
     }
 
-    .product-details-price-section {
+    .product-details-buttons {
         flex-direction: column;
-        align-items: stretch;
     }
 
-    .product-details-add-cart {
+    .product-details-add-cart,
+    .product-details-whatsapp {
         width: 100%;
-        justify-content: center;
+        min-width: auto;
     }
 }

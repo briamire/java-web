@@ -668,10 +668,10 @@
 
             <div class="card-container">
                 <div class="card" data-category="all in one pcs">
-               <img src="Images/HP ProBook 450 G10.webp" alt="HP all in one pcs" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+               <img src="Images/HP ProBook 450 G10.webp" alt="HP all in one pcs" onclick="openProductDetails(this)">
                     <div class="card-content">
-                        <h5>HP All-in-One PC Bib238FFI 2C20</h5>
-                        <p> Core i5-1135G7 | 8GB RAM | 1TB HDD  |  24" Monitor  | Keyboard | Mouse | FreeDos  | 1 Year Warranty</p>
+                        <h5 onclick="openProductDetails(this)">HP All-in-One PC Bib238FFI 2C20</h5>
+                        <p onclick="openProductDetails(this)"> Core i5-1135G7 | 8GB RAM | 1TB HDD  |  24" Monitor  | Keyboard | Mouse | FreeDos  | 1 Year Warranty</p>
                         <div class="card-footer">
                             <div class="cost"> KES 94,300 </div>
                             <button class="add-to-cart" onclick="addToCart(this, 'HP All-in-One PC Bib238FFI 2C20',  94300)">
@@ -5441,9 +5441,14 @@
                 <div class="product-details-specs" id="productDetailsSpecs"></div>
                 <div class="product-details-price-section">
                     <div class="product-details-price" id="productDetailsPrice"></div>
-                    <button class="product-details-add-cart" id="productDetailsAddBtn">
-                        <i class="fas fa-shopping-cart"></i> Add to Cart
-                    </button>
+                    <div class="product-details-buttons">
+                        <button class="product-details-add-cart" id="productDetailsAddBtn">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="product-details-whatsapp" id="productDetailsWhatsAppBtn">
+                            <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
