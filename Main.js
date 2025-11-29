@@ -23,7 +23,7 @@ async function initializeApp() {
         await loadProducts();
     } catch (error) {
         console.error('Error initializing app:', error);
-        showNotification('Error loading data', 'error');
+        //showNotification('Error loading data', 'error');
     }
 }
 

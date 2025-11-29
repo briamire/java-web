@@ -76,19 +76,6 @@ function toggleMobileMenu() {
     }
 }
 
-// Toggle search bar visibility
-//function toggleSearch() {
-  //  const heroSearch = document.getElementById('heroSearch');
-  //if (heroSearch) {
-      //  heroSearch.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      //  const searchInput = document.getElementById('searchInput');
-       // if (searchInput) {
-           // setTimeout(() => {
-               // searchInput.focus();
-            //}, 500);
-        //}
-    //}
-//}
 
 // Search products in static cards
 function searchProductsStatic(query) {
@@ -270,4 +257,68 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-console.log('HP Products page scripts loaded successfully!');
+console.log('HP Products page scripts loaded successfully!'); 
+
+
+// Product Details Modal Functions
+function openProductDetails(element) {
+    const card = element.closest('.card');
+    const img = card.querySelector('img').src;
+    const title = card.querySelector('h5').textContent;
+    const specs = card.querySelector('p').textContent;
+    const price = card.querySelector('.cost').textContent.trim();
+    
+    // Set modal content
+    document.getElementById('productDetailsImg').src = img;
+    document.getElementById('productDetailsTitle').textContent = title;
+    
+    // Parse and format specs
+    const specsArray = specs.split('|').map(spec => spec.trim());
+    const specsHTML = specsArray.map(spec => `<p>${spec}</p>`).join('');
+    document.getElementById('productDetailsSpecs').innerHTML = specsHTML;
+    
+    document.getElementById('productDetailsPrice').textContent = price;
+    
+    // Set up add to cart button
+    const priceValue = parseInt(price.replace(/[^\d]/g, ''));
+    const addBtn = document.getElementById('productDetailsAddBtn');
+    addBtn.onclick = function() {
+        addToCart(this, title, priceValue);
+        closeProductDetails();
+    };
+    
+    // Show overlay
+    const overlay = document.getElementById('productDetailsOverlay');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProductDetails() {
+    const overlay = document.getElementById('productDetailsOverlay');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Close on outside click
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('productDetailsOverlay');
+    if (overlay) {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                closeProductDetails();
+            }
+        });
+    }
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeProductDetails();
+        }
+    });
+});
+
+// Update your existing onclick to use the new function name
+function openProductModal(element) {
+    openProductDetails(element);
+}

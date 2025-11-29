@@ -8,11 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+    <!-- Header -->
     <header>
+
+        <button class="hamburger" onclick="toggleMobileMenu()">
+                        <span class="hamburger-box"></span>
+                        <i class="fas fa-bars"></i>
+                    </button>
         <div class="header-container">
             <div class="logo">
                 <i class="fas fa-laptop"></i>
-                <h1 id="rotating-title">Nevermind Technologies</h1>
+                <h1 id="rotating-title">Nevermind </h1>
             </div>              
                     
             
@@ -23,10 +30,11 @@
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
             </nav>
+            
             <div class="header-actions">
                 <div class="search-box">
                         <input type="text" placeholder="Search products..." id="searchInput" onkeypress="if(event.key === 'Enter') searchProductsStatic()">
-                   <button onclick="searchProductsStatic()">
+                   
                         <i class="fas fa-search"></i>
                     </div>
                    <button class="icon-btn" id="wishlist-btn">
@@ -40,12 +48,7 @@
                     <button class="icon-btn" id="user-btn">
                         <i class="far fa-user"></i>
                     </button>
-                    <button class="hamburger" onclick="toggleMobileMenu()">
-                        <span class="hamburger-box"></span>
-                        
-                
-                        <i class="fas fa-bars"></i>
-                    </button>
+                    
                     </div>
                 </div>
             </div>
@@ -55,12 +58,7 @@
     <section class="hero">
         <div class="hero-content">
             <h2>Premium Tech Accessories</h2>
-            <p>Discover the latest technology at unbeatable prices</p>
-            <div class="search-bar" id="heroSearch">
-                
-                    
-                
-            </div>
+            <p>Discover the latest technology at unbeatable prices</p>       
         </div>
     </section>
 
@@ -108,7 +106,7 @@
     </nav>
 
     <!-- HP Products Section -->
-    <section class="category" id="hp-products">
+    <div class="category" id="hp-products">
         <div class="category-header">
             <h3><i class="fas fa-laptop"></i> HP Products</h3>
             <p>Explore our comprehensive range of HP technology solutions</p>
@@ -126,15 +124,15 @@
                     <button class="filter-btn" onclick="filterProducts('printers')">printers</button>
                 </div>
             </div>
-            
+                   
             
             <div class="card-container">
                 <div class="card" data-category="notebook">
                     <div class="card-badge">New</div>
-                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="HP Laptop" onclick="openModal()" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="HP Laptop" onclick="openProductDetails(this)" >
                     <div class="card-content">
-                        <h5>HP NoteBook15 DW3037NIA</h5>
-                        <p>Core i7-1135G7 quad | 8GB RAM | 512GB SSD | 15.6" Inches | WIN 10 H | Jet Black Mesh Knit</p>
+                        <h5 onclick="openProductDetails(this)">HP NoteBook15 DW3037NIA</h5>
+                        <p onclick="openProductDetails(this)">Core i7-1135G7 quad | 8GB RAM | 512GB SSD | 15.6" Inches | WIN 10 H | Jet Black Mesh Knit</p>
                         <div class="card-footer">
                             <div class="cost"> KES 89,500 </div>
                             <button class="add-to-cart" onclick="addToCart(this, 'HP NoteBook15 DW3037NIA', 89500)">
@@ -142,13 +140,14 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div>                      
 
+               
                 <div class="card" data-category="notebook">
-                    <img src="Images/HP NoteBook15 DW1279NIA.avif" alt="HP Laptop" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <img src="Images/HP NoteBook15 DW1279NIA.avif" alt="HP Laptop" onclick="openProductDetails(this)">
                     <div class="card-content">
-                        <h5>HP NoteBook15 DW1279NIA</h5>
-                        <p>Core i5-10210U quad | 8GB RAM | 512GB SSD | 15.6" Inches | FREE DOS | Jet Black Mesh Knit</p>
+                        <h5 onclick="openProductDetails(this)">HP NoteBook15 DW1279NIA</h5>
+                        <p onclick="openProductDetails(this)">Core i5-10210U quad | 8GB RAM | 512GB SSD | 15.6" Inches | FREE DOS | Jet Black Mesh Knit</p>
                         <div class="card-footer">
                             <div class="cost"> KES 62,000 </div>
                             <button class="add-to-cart" onclick="addToCart(this, 'HP NoteBook15 DW1279NIA', 62000)">
@@ -2114,7 +2113,7 @@
         
 
         <!-- Dell Accessories Section -->
-        <section class="category" id="Dell-products">
+        <html class="category" id="Dell-products">
         <div class="category-header">
             <h3><i class="fas fa-laptop"></i> Dell Products</h3>
             <p>Explore our comprehensive range of Dell technology solutions</p>
@@ -3891,7 +3890,7 @@
         </div>
 
 
-        <!-- Dell Servers Section -->
+        <!-- Dell Server Accessories Section -->
         <div id="dell-server-accessories" class="product-section">
             <div class="section-title">
                 <h4><i class="fas fa-server"></i> Dell Server Accessories</h4>
@@ -4140,6 +4139,1129 @@
                 </div>
         </div>
 
+    <!-- Lenovo Products Section -->
+    <body class="category" id="lenovo-products">
+        <div class="category-header">
+            <h3><i class="fas fa-laptop"></i> Lenovo Products</h3>
+            <p>Explore our comprehensive range of Lenovo technology solutions</p>
+        </div>
+
+
+        <!-- Lenovo laptops Section -->
+        <div id="Lenovo-laptops" class="product-section">
+            <div class="section-title">
+                <h4><i class="fas fa-laptop"></i> Lenovo Laptops</h4>
+           </div>
+            
+            <div class="card-container">
+                <div class="card" data-category="laptops">                    
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="ideapads" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo NoteBook S145 </h5>
+                        <p> Core I7-1065G7 | 8GB RAM | 512GB SSD | FREE DOS | 15.6" Inches  | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 80,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo NoteBook S145  ', 80500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="ideapads" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Ideapad Flex 5 </h5>
+                        <p>  Core  i5-1135G7 | 8GB RAM | 512GB SSD | 14" Inches | Touchscreen | X360 | Stylus Pen | Win 11 Home | 1-Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 89,999 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Ideapad Flex 5  ', 89999)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="ideapads" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Ideapad Flex 5 14ITL05 </h5>
+                        <p> Core i5-1135G7 | 8GB RAM |  512GB | 14 " Inches |Touchscreen | X360 | Stylus Pen | Win 11 Home | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 91,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Ideapad Flex 5 14ITL05  ', 91500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="ideapads" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Ideapad Flex 5 14IAU7 </h5>
+                        <p> Core i5 1235U | 8GB RAM | 512GB SSD | 14 " Inches | Touchscreen | X360 | Stylus Pen | Win 11 Home | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 91,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Ideapad Flex 5 14IAU7  ', 91500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="ideapads" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Ideapad Flex 5 14IAU7 </h5>
+                        <p>  Core i7 1235U 16GB RAM | 512GB SSD |14 " Inches | Touchscreen | X360 | Stylus Pen | Win 11 Home |1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 112,700 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Ideapad Flex 5 14IAU7  ', 112700)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="ideapads" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Ideapad 3 </h5>
+                        <p>   Core i7 1165G7 | 8GB RAM | 512GB SSD | Free Dos | 14 " Inches  | 1-Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 82,800 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Ideapad 3  ', 82800)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="ideapads" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Ideapad Slim 3 </h5>
+                        <p>  Core i5-13420H | 8GB RAM |  512GB SSD | 14 " Inches | FREE DOS | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 66,700 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Ideapad Slim 3  ', 66700)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="ideapads" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Ideapad Slim 3 </h5>
+                        <p>  Core i5-13420H | 16GB RAM |  512GB SSD | 14 " Inches | FREE DOS | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 69,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Ideapad Slim 3  ', 69000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="ideapads" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Ideapad 5 2 in 1 </h5>
+                        <p>  Core i7-13620H | 16GB RAM |  512GB SSD | 14 " Inches | Touchscreen | X360 | Stylus Pen | Win 11 Home | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 130,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Ideapad 5 2 in 1  ', 130500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="v" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo V15-IIL </h5>
+                        <p>  CORE i3-1005G1 | 15.6" Inches| 4GB RAM | 1TB HDD | WINDOWS 10 PRO | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 51,800 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo V15-IIL  ', 51800)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkbook" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkBook 14  </h5>
+                        <p> Core i5-1135G7 | 8GB RAM |512GB SSD | FREE DOS | 14" Inches | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 82,800 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkBook 14  ', 82800)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkbook" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkBook 15 GEN 2 ITL </h5>
+                        <p> Core i5 1135G7 |  8GB RAM |  512GB SSD |  Free Dos | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 82,800 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkBook 15 GEN 2 ITL  ', 82800)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkbook" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkBook 14 GEN 2 ITL </h5>
+                        <p> Core i7-1165G7 | 8GB RAM | 512GB SSD | 14" Inches | Free Dos | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 98,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkBook 14 GEN 2 ITL  ', 98500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkbook" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkBook 14-IR </h5>
+                        <p> Core i7-13700H | 16GB RAM | 512GB SSD | Intel Iris Xe | Free DOS | 14.0" | 2 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 108,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkBook 14-IR  ', 108500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkbook" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkBook 16 G6 </h5>
+                        <p> CORE i5 | 13th GEN | 8GB RAM | 512GB SSD | Free Dos | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 97,800 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkBook 16 G6  ', 97800)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkbook" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkBook 16 G6 IRL </h5>
+                        <p> Core i7 13700H | 8GB RAM | 512GB SSD | Free Dos | 2 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 109,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkBook 16 G6 IRL  ', 109500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad E" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad E14 </h5>
+                        <p> Core i5-1235U | 8GB Base DDR4 | 512GB SSD  |  15.6" Inches | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 89,700 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad E14  ', 89700)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad E" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad E14 GEN 2 </h5>
+                        <p> Core i5 1135G7 | 8GB RAM | 512GB SSD | Free Dos| 14″ INCHES | BLACK | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 92,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad E14 GEN 2  ', 92000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad E" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad E15 GEN 2 </h5>
+                        <p> Core™ i5-1135G7 | 8GB RAM | 512GB SSD | 15.6" Inches | Free Dos | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 97,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad E15 GEN 2  ', 97500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad E" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad E15 GEN 2 </h5>
+                        <p> Core™ i7-1135G7 | 16GB RAM | 512GB SSD | 15.6" Inches | Free Dos | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 112,700 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad E15 GEN 2  ', 112700)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad E" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad E15 G2 </h5>
+                        <p> Core I7 -1165G7 | 8GB RAM | 512GB SSD | 15.6" Inches | Free Dos | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 110,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad E15 G2  ', 110500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad E" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad E14 GEN 4 </h5>
+                        <p> Core i7 1255U | 16GB RAM | 512GB SSD | Free Dos | 14″ Inches | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 115,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad E14 GEN 4  ', 115000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad E" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad E14 GEN 5 </h5>
+                        <p> Core i5 | 13th Gen | 8GB RAM | 512GB SSD | Free Dos | 14″ Inches 1 Year Warranty | Free BackPack </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 99,999 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad E14 GEN 5  ', 99999)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad E" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad E14 GEN 5 </h5>
+                        <p> Core i7 | 13TH GEN | 16GB RAM | 512GB SSD | Free Dos | 14″ Inches | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 121,900 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad E14 GEN 5  ', 121900)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad E" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad E16 </h5>
+                        <p> CORE i5-1335U | 8GB RAM | 512GB SSD |  Free Dos | 16.0" WUXGA AG | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 105,800 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad E16  ', 105800)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad E" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Thinkpad E16 Gen 1 </h5>
+                        <p> Core i7-1355U | 8GB RAM | 512GB SSD |Free DOS |16.0" WUXGA | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 120,800 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Thinkpad E16 Gen 1  ', 120800)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad E" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad E14 Gen6 </h5>
+                        <p> Core™ Ultra 7 155U | 16GB RAM |1 TB SSD | 14" Inches | Touchscreen | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 184,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad E14 Gen6  ', 184000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad T14" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad T14 GEN 2 </h5>
+                        <p> CORE i5-1135G7 | 14" Inches | 8GB RAM | 512GB SSD | Win 10 Pro | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 138,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad T14 GEN 2  ', 138000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad T14" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad T14 GEN 4 </h5>
+                        <p> Corei7-1355U |16GB RAM | 512GB SSD | Win 11 Pro | 14" Inches | 3 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 227,700 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad T14 GEN 4  ', 227700)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad T14s" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad T14s Gen 2 </h5>
+                        <p> CORE I5-1135G7 | 14" Inches  | 16GB RAM | 512GB SSD | Win 10 Pro | 3 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 178,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad T14s Gen 2  ', 178000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad T14s" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad T14s Gen 2 </h5>
+                        <p> CORE I7-1135G7 | 14" Inches  | 16GB RAM | 512GB SSD | Win 10 Pro | 3 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 232,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad T14s Gen 2  ', 232500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad T14s" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad T14s Gen 2 </h5>
+                        <p> CORE I7-10510U | 14" Inches  | 16GB RAM | 1TB SSD | Win 10 Pro | 3 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 204,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad T14s Gen 2  ', 204000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad T14s" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad T14s Gen 5</h5>
+                        <p> Ultra 7-155U | 14" Inches  | 16GB RAM | 512 GB SSD | Win 11 Pro | 3 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 247,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad T14s Gen 5  ', 247500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad Tablet" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad  X1 Tablet  GEN 3 </h5>
+                        <p> CORE i5 | 8GB RAM | 256GB SSD | Win 10 Pro </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 135,700 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad  X1 Tablet  GEN 3  ', 135700)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad L" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad L490 </h5>
+                        <p> CORE i7-8565U | 8GB RAM | 512GB SSD | 14.0'' Inches  | Win 10 Pro | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 97,800 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad L490  ', 97800)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad L" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad L590  </h5>
+                        <p> CORE i7-8565U | 8GB RAM | 512GB SSD | 15.6" Inches | Win 10 Pro | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 97,800 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad L590  ', 97800)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad L" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad L14</h5>
+                        <p> CORE i5-1235U | 8GB RAM | 512GB SSD  |14" Inches | Free Dos | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 132,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad L14  ', 132000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad L" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad L15 </h5>
+                        <p> CORE i5 | 10TH GEN | 8GB RAM | 512GB SSD | 15.6" Inches| Free Dos | 1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 105,800 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad L15  ', 105800)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Thinkpad L" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad L14 G4 </h5>
+                        <p> CORE i7-1355U | 16GB RAM | 512GB SSD | 14" Inches | Free DOS | 3 Year Warrsnty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 161,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad L14 G4  ', 161000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="X" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo X13 GEN </h5>
+                        <p> CORE i5-1135G7 | 16GB RAM | 512GB SSD | 13.3" Inches | Win 10 Pro | 3 Years Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 205,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo X13 GEN  ', 205500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="X" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo X1 Carbon GEN 10 </h5>
+                        <p> CORE i7-1255U | 16GB RAM | 512GB SSD | 14.0" inches | Win 11 PRO | 3 Years Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 230,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo X1 Carbon GEN 10  ', 230000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="X" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo X1 Carbon GEN 12 </h5>
+                        <p> Ultra 7-155U | 16GB RAM | 1TB SSD | 14.0" inches | Win 11 PRO | 3 Years Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 332,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo X1 Carbon GEN 12  ', 332500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="X" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo X13 GEN 5 </h5>
+                        <p> Ultra 7-155U | 16GB RAM | 1TB SSD | 13.3" inches | Win 11 PRO | 3 Years Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 247,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo X13 GEN 5  ', 247500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Gaming" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Legion 5 16IRX9 </h5>
+                        <p> CORE i7 - 14650HX | 16GB RAM | 1TB SSD | NVIDIA®  RTX™ 4060 8GB GDDR6 | 16" Inches | Win 11 Home </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 235,800 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Legion 5 16IRX9  ', 235800)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Gaming" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo LOQ 15IRH8 </h5>
+                        <p> CORE i7-13620H | 16GB RAM | 512GB SSD | NVIDIA®  RTX™ 4050 6GB GDDR6 | 15.6" INCHES | Win 11 Home </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 164,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo LOQ 15IRH8  ', 164000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="laptops">
+                <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="Gaming" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Legion 5 15IRX10 AI-Powered Gaming PC </h5>
+                        <p> Core i9 - 149000HX | 32GB RAM | 1TB SSD | NVIDIA® GeForce RTX™ 5070 8GB GDDR7 | 15.1" INCHES | 1 Year Warranty</p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 245,999 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' DELL R710 Cooling Fan  ', 245999)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <!-- Lenovo desktops Section -->
+        <div id="lenovo-desktops" class="product-section">
+            <div class="section-title">
+                <h4><i class="fas fa-desktop"></i> Lenovo desktops</h4>
+           </div>
+            
+                <div class="card-container">
+                <div class="card" data-category="desktops">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo desktops" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo V50t G2 Tower </h5>
+                        <p>  Corei7-10700 |  8GB RAM DDR4 | 1TB HDD 7200rpm | FREE DOS  |  USB KeyBoard |  MOUSE |  1 Year Warranty </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 86,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo V50t G2 Tower  ', 86500)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+
+                <!-- Lenovo monitors Section -->
+        <div id="lenovo-monitors" class="product-section">
+            <div class="section-title">
+                <h4><i class="fas fa-monitor"></i> Lenovo monitors</h4>
+           </div>
+            
+                <div class="card-container">
+                <div class="card" data-category="monitors">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo monitors" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkVision S22e-20  </h5>
+                        <p> 21.5" Inches | HDMI | VGA,Tilt Stand </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 17,825 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkVision S22e-20  ',  17825 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="monitors">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo monitors" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkVision LED C24-40 Monitor </h5>
+                        <p>  C24-40 23.8″ FHD (VGA and HDMI) </p>
+                        <div class="card-footer">
+                            <div class="cost"> KES 19,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkVision LED C24-40 Monitor  ', 19000)">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+
+                <!-- Lenovo tablets Section -->
+        <div id="lenovo-tablets" class="product-section">
+            <div class="section-title">
+                <h4><i class="fas fa-tablet"></i> Lenovo monitors</h4>
+           </div>
+            
+                <div class="card-container">
+                <div class="card" data-category="tablets">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo tablets" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Tab M11 Tablet  </h5>
+                        <p> WiFi+4G | 128GB | 4GB | 11' inch | Luna Grey | Free Back Cover | Stylus Pen </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 33,999 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Tab M11 Tablet  ',  33999 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="tablets">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo tablets" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Tab M9 Tablet  </h5>
+                        <p> 32GB | 3GB | 9" Inch HD |  MediaTek Helio G80 | 2+8MP | 4G LTE | Wifi | Arctic Grey </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 20,700 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Tab M9 Tablet  ',  20700 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="tablets">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo tablets" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Tab P11 Tablet  </h5>
+                        <p> 2ND GEN | 128GB | 6GB |11.5" Inch Grey |Keyboard & Pen Included | </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 67,999 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Tab P11 Tablet  ',  67999 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+
+    <!-- Lenovo accessories Section -->
+        <div id="lenovo-accessories" class="product-section">
+            <div class="section-title">
+                <h4><i class="fas fa-mice"></i> Lenovo Accessories</h4>
+           </div>
+            
+                <div class="card-container">
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo USB Mouse  </h5>
+                        <p> Lenovo Essential USB Mouse    </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 1,799 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Essential USB Mouse   ',  1799 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo keyboard </h5>
+                        <p> Lenovo ThinkPad E14 KYB UK English keyboard    </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 17,900 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo keyboard   ',  17900 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo USB-C to Ethernet Adapter  </h5>
+                        <p> USB-C to Ethernet Adapter    </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 4,900 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo USB-C to Ethernet Adapter   ',  4900 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad Hybrid Docking Station  </h5>
+                        <p> Lenovo ThinkPad Hybrid USB-C with USB-A Docking Station    </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 34,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad Hybrid USB-C with USB-A Docking Station   ',  34500 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Bluetooth Mouse  </h5>
+                        <p> Lenovo ThinkBook Bluetooth Silent Mouse   </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 5,050 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkBook Bluetooth Silent Mouse   ',  5050 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Keyboard and Mouse  </h5>
+                        <p> Lenovo Essential Wired Combo Keyboard and Mouse    </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 6,700 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Essential Wired Combo Keyboard and Mouse   ',  6700 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Backpack </h5>
+                        <p> Lenovo ThinkPad 15.6-inch Basic Backpack   </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 4,400 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad 15.6-inch Basic Backpack   ',  4400 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad Backpack  </h5>
+                        <p> Lenovo ThinkPad Professional 15.6-inch Backpack   </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 15,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad Professional 15.6-inch Backpack   ',  15000 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo ThinkPad Backpack (Eco) </h5>
+                        <p> Lenovo ThinkPad Essential 16-inch Backpack (Eco)    </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 6,700 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad Essential 16-inch Backpack (Eco)   ',  6700 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Laptop Adapter  </h5>
+                        <p> Lenovo Usb C 65 W Laptop Adapter    </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 8,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Usb C 65 W Laptop Adapter   ',  8000 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo USB-C Hub  </h5>
+                        <p> Lenovo USB-C 7-in-1 Hub    </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 11,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo USB-C 7-in-1 Hub   ',  11000 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Thunderbolt 4 Dock  </h5>
+                        <p> Lenovo ThinkPad Universal Thunderbolt 4 Dock    </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 34,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad Universal Thunderbolt 4 Dock   ',  34500 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo USB-C Dock  </h5>
+                        <p> Lenovo ThinkPad Universal USB-C Dock    </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 34,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo ThinkPad Universal USB-C Dock   ',  34500 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="card" data-category="accessories">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo accessories" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo USB-C Universal Business Dock  </h5>
+                        <p> Lenovo USB-C Universal Business Dock Wired 2 x USB 3.2 Gen 2    </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 40,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo USB-C Universal Business Dock Wired 2 x USB 3.2 Gen 2   ',  40500 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lenovo all in one Section -->
+        <div id="lenovo-all-in-one-pc" class="product-section">
+            <div class="section-title">
+                <h4><i class="fas fa-desktop"></i> Lenovo All In One PC</h4>
+           </div>
+            
+            <div class="card-container">
+                <div class="card" data-category="all in one pc">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="lenovo all in one pc" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> Lenovo Neo 50a-24 G5  </h5>
+                        <p> 23.8″ Non-Touch Core i5-13420H | 8GB RAM DDR5 | 512GB SSD| M.2 2280 | Free DOS    </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 110,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' Lenovo Neo 50a-24 G5   ',  110500 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>  
+        
+        <!-- Asus Products Section -->
+    <section class="category" id="asus-products">
+        <div class="category-header">
+            <h3><i class="fas fa-laptop"></i> Asus Products</h3>
+            <p>Explore our comprehensive range of Asus technology solutions</p>
+        </div>
+
+
+        <!-- Asus Laptops Section -->
+        <div id="asus-laptops" class="product-section">
+            <div class="section-title">
+                <h4><i class="fas fa-laptop"></i> Asus Laptops </h4>
+           </div>
+            
+            <div class="card-container">
+                <div class="card" data-category="laptops">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="vivobook" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> ASUS VivoBook S14 Series  </h5>
+                        <p> 14" Inches | Core™ i7-10510U | 8GB RAM |512GB SSD | Screen pad 2.0 | Windows 10 | 1 Year Warranty | Transparent Silver </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 110,000 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' ASUS VivoBook S14 Series   ',  110000 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+
+                
+                <div class="card" data-category="laptops">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="vivobook gaming" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> ASUS VivoBook Gaming Series  </h5>
+                        <p> 15.6" Inches | Core™ i7-9750H | 16GB RAM | 1TB HDD | 4GB GDDR5 NVIDIA GeForce GTX 1050 | Windows 10 | 1 Year Warranty | Star Black </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 113,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' ASUS VivoBook Gaming Series   ',  113500 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+
+                
+                <div class="card" data-category="laptops">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="zenbook 14" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> ASUS ZenBook 14 Series  </h5>
+                        <p> Military Grade | Screen pad 2.0| Core™ i7-10510U | 8GB RAM | 512GB PCIe SSD + 32GB Intel Optane | Windows 10 | 1 Year Warranty | Royal Blue </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 113,999 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' ASUS ZenBook 14 Series   ',  113999 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+
+                
+                <div class="card" data-category="laptops">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="zenbook 14" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> ASUS ZenBook 14 Series  </h5>
+                        <p> Military Grade | 14" Inches | Touch Screen | Screen pad 2.0 | Core™ i7-10510U | 8GB RAM | 512GB PCIe SSD + 32GB Intel Optane | Windows 10 | 1 Year Warranty | Royal Blue </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 139,999 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' ASUS ZenBook 14 Series   ',  139999 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+
+                
+                <div class="card" data-category="laptops">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="zenbook flip 14" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> ASUS ZenBook Flip 14 Series  </h5>
+                        <p> Touch Screen |Screen pad | Core™ i7-10510U | 8GB DDR3 RAM | 512GB PCIe SSD + 32GB Intel Optane | Windows 10 | 1 Year Warranty | Gun Grey </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 120,800 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' ASUS ZenBook Flip 14 Series   ',  120800 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+               
+                <div class="card" data-category="laptops">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="zenbook flip 14" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> ASUS ZenBook Flip 14 Series  </h5>
+                        <p> 14" Inches | Touch Screen| Screen Pad | Core™ i7-10510U | 16GB RAM | 512GB PCIe SSD + 32GB Intel Optane | Windows 10 | 1 Year Warranty | Gun Grey </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 148,500 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' ASUS ZenBook Flip 14 Series   ',  148500 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+
+                <div class="card" data-category="laptops">
+                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="X" onerror="this.src='https://via.placeholder.com/300x200?text=HP+Laptop'">
+                    <div class="card-content">
+                        <h5> ASUS Laptop X Series </h5>
+                        <p>  15.6" -inch | Core™ i5-1035G1 | 8GB RAM | 1TB HDD | Windows 10 Home| 1 Year Warranty | Slate Grey </p>
+                        <div class="card-footer">
+                            <div class="cost">  KES 67,999 </div>
+                            <button class="add-to-cart" onclick="addToCart(this, ' ASUS Laptop X Series   ',  67999 )">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>      
+
+
+
+
 
 
 
@@ -4256,7 +5378,7 @@
         </div>
     </div>
 
-    <!-- Product Modal -->
+    <!-- Product Modal Admin-->
     <div id="product-modal" class="modal">
         <div class="modal-content modal-large">
             <button class="close-modal" id="close-product-modal">
@@ -4302,13 +5424,41 @@
                 <button type="submit" class="btn btn-primary btn-block">Save Product</button>
             </form>
         </div>
+    </div>         
+    
+    
+    <!-- Product Details Modal -->
+    <!-- Product Details Overlay -->
+<div id="productDetailsOverlay" class="product-details-overlay">
+    <div class="product-details-container">
+        <button class="product-details-close" onclick="closeProductDetails()">&times;</button>
+        <div class="product-details-content">
+            <div class="product-details-image">
+                <img id="productDetailsImg" src="" alt="Product Image">
+            </div>
+            <div class="product-details-info">
+                <h2 id="productDetailsTitle"></h2>
+                <div class="product-details-specs" id="productDetailsSpecs"></div>
+                <div class="product-details-price-section">
+                    <div class="product-details-price" id="productDetailsPrice"></div>
+                    <button class="product-details-add-cart" id="productDetailsAddBtn">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+    
+
+    
 
     <!-- Overlay -->
     <div id="overlay" class="overlay"></div>
 
     <script src="products.js"></script>
     <script src="Main.js"></script>
-    <script src="Admin.js"></script>
+    <script src="Admin.js"></script>  
+
 </body>
 </html>

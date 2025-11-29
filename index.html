@@ -11,10 +11,15 @@
    
     <!-- Header -->
      <header>
+
+        <button class="hamburger" onclick="toggleMobileMenu()">
+                        <span class="hamburger-box"></span>
+                        <i class="fas fa-bars"></i>
+                    </button>
         <div class="header-container">
             <div class="logo">
                 <i class="fas fa-laptop"></i>
-                <h1 id="rotating-title">Nevermind Technologies</h1>
+                <h1 id="rotating-title">Nevermind </h1>
             </div>
             
             <nav class="main-nav">
@@ -27,7 +32,7 @@
                 
                 <div class="header-actions">
                     <div class="search-box">
-                        <input type="text" id="search-input" placeholder="Search products...">
+                        <input type="text" id="searchInput" placeholder="Search products..."  onkeypress="if(event.key === 'Enter') searchProductsStatic()">
                         <i class="fas fa-search"></i>
                     </div>
                     <button class="icon-btn" id="wishlist-btn">
@@ -413,7 +418,7 @@
 
     <script src="Main.js"></script>
     <script src="Admin.js"></script>
-     <script src="products.js"></script>
+    <script src="products.js"></script>
 
 </body>
 </html>
