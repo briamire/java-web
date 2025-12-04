@@ -620,7 +620,7 @@ section {
 .footer {
     background: var(--dark);
     color: white;
-    padding: 3rem 0 1rem;
+    /*padding: 3rem 0 1rem;*/
 }
 
 .footer-grid {
@@ -839,7 +839,7 @@ section {
 }
 
 
-/* Modal */
+/* Admin product Modal */
 .modal {
     display: none;
     position: fixed;
@@ -1193,6 +1193,9 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--background-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header Styles */
@@ -1341,46 +1344,8 @@ header {
     font-size: 1.25rem;
     margin-bottom: 2rem;
     opacity: 0.9;
-}
+} 
 
-.search-bar {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    gap: 0.5rem;
-    background: white;
-    padding: 0.5rem;
-    border-radius: 50px;
-    box-shadow: var(--shadow-lg);
-}
-
-.search-bar input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 50px;
-}
-
-.search-bar button {
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.75rem 2rem;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.search-bar button:hover {
-    background: var(--primary-dark);
-}
 
 /* Category Navigation */
 .category-nav {
@@ -1389,7 +1354,8 @@ header {
     box-shadow: var(--shadow);
     position: sticky;
     top: 80px;
-    z-index: 999;
+    z-index: 999;   
+    
 }
 
 .category-nav-container {
@@ -1397,7 +1363,7 @@ header {
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
-    gap: 1rem;
+    gap: 1rem;    
 }
 
 .category-dropdown {
@@ -1468,12 +1434,13 @@ header {
 
 /* Category Section */
 .category {
-    max-width: 1400px;
+   
     margin: 0 auto;
-    padding: 3rem 2rem;
+   /* padding: 3rem 2rem;*/
 }
 
 .category-header {
+     
     text-align: center;
     margin-bottom: 3rem;
 }
@@ -1495,8 +1462,10 @@ header {
 
 /* Product Section */
 .product-section {
+    max-width: 1400px;
     margin-bottom: 4rem;
     scroll-margin-top: 150px;
+    margin: 0 auto;   
 }
 
 .section-title {
@@ -1546,9 +1515,11 @@ header {
 
 /* Card Container */
 .card-container {
+    max-width: 1400px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
+    padding: 4rem 2rem;
 }
 
 /* Card Styles */
@@ -1669,16 +1640,17 @@ header {
 
 /* Footer */
 footer {
+    
     background: var(--text-dark);
     color: white;
-    padding: 2rem;
+    /*padding: 3rem 0 1rem;*/
     text-align: center;
-    margin-top: 4rem;
+    margin-top: 4rem;   
 }
 
 .footer-content p {
     font-size: 0.9rem;
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 
