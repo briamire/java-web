@@ -1638,22 +1638,6 @@ header {
     font-size: 1.1rem;
 }
 
-/* Footer */
-footer {
-    
-    background: var(--text-dark);
-    color: white;
-    /*padding: 3rem 0 1rem;*/
-    text-align: center;
-    margin-top: 4rem;   
-}
-
-.footer-content p {
-    font-size: 0.9rem;
-    opacity: 0.6;
-}
-
-
 /* Product Details Overlay Styles */
 .product-details-overlay {
     display: none;
