@@ -12,10 +12,30 @@
     <!-- Header -->
     <header>
 
-        <button class="hamburger" onclick="toggleMobileMenu()">
-                        <span class="hamburger-box"></span>
-                        <i class="fas fa-bars"></i>
-                    </button>
+<button class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">HP Products</div>
+    <ul class="sidebar-menu">
+        <li><a href="#"><span>💻</span> Laptops</a></li>
+        <li><a href="#"><span>🖥️</span> Desktops</a></li>
+        <li><a href="#"><span>⚙️</span> Workstations</a></li>
+        <li><a href="#"><span>📱</span> All in Ones</a></li>
+        <li><a href="#" class="active"><span>🖥️</span> Monitors</a></li>
+        <li><a href="#"><span>🖨️</span> Printers</a></li>
+        <li><a href="#"><span>🔧</span> Servers</a></li>
+        <li><a href="#"><span>⚡</span> Server Accessories</a></li>
+        <li><a href="#"><span>🎧</span> Accessories</a></li>
+        <li><a href="#"><span>🖨️</span> Toners & Cartridges</a></li>
+    </ul>
+</div>
+        
         <div class="header-container">
             <div class="logo">
                 <i class="fas fa-laptop"></i>
@@ -11832,9 +11852,8 @@
         </div>
     </div>
 </div>
-    
 
-    
+  
 
     <!-- Overlay -->
     <div id="overlay" class="overlay"></div>

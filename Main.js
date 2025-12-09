@@ -28,21 +28,6 @@ async function initializeApp() {
 }
 
 
-// Render Star Rating
-function renderStars(rating) {
-    let stars = '';
-    for (let i = 1; i <= 5; i++) {
-        if (i <= Math.floor(rating)) {
-            stars += '<i class="fas fa-star"></i>';
-        } else if (i === Math.ceil(rating) && rating % 1 !== 0) {
-            stars += '<i class="fas fa-star-half-alt"></i>';
-        } else {
-            stars += '<i class="far fa-star"></i>';
-        }
-    }
-    return stars;
-}
-
 // Add to Cart
 function addToCart(productId) {
     const product = products.find(p => p.productId === productId);
@@ -454,3 +439,17 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+
+const hamburger = document.getElementById('hamburger');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+
+function toggleMenu() {
+    hamburger.classList.toggle('active');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
+}
+
+hamburger.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
