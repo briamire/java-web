@@ -367,121 +367,98 @@ section {
 }
 
 /* Products Grid */
+/*
+ * BRAND LOGO SELECTION STYLES (index.html)
+ * Styles for the new brand logo section inside the .products-section.
+ */
 
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+.brand-logo-selection {
+    /* Padding above and below the brand section */
+    padding: 1.5rem 0;
+    /* Separators for visual appeal */
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+    /* Center all inline content (like the brand-title) */
+    text-align: center; 
 }
 
-.product-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.product-image {
-    text-align: center;
-    padding: 2rem;
-    font-size: 4rem;
-    background: var(--light);
-}
-
-.product-info {
-    padding: 1.5rem;
-}
-
-.product-name {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+.brand-title {
+    font-size: 1.15rem;
+    font-weight: 600;
     color: var(--dark);
+    margin-bottom: 1.5rem;
+    display: block;
 }
 
-.product-rating {
+.logo-grid {
+    /* Use Flexbox to align logos horizontally */
     display: flex;
+    justify-content: center; /* Center the logo elements themselves */
     align-items: center;
-    gap: 0.3rem;
-
-    margin-bottom: 0.5rem;
+    gap: 2.5rem; /* Space between logo links */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    padding: 0 1rem;
 }
 
-.product-rating i {
-    color: #F59E0B;
-    font-size: 0.9rem;
-}
-
-.product-description {
-    color: #6B7280;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.product-footer {
-    display: flex;
-    justify-content: space-between;
-
-    align-items: center;
-    margin-top: 1rem;
-}
-
-.product-price {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-.product-stock {
-    font-size: 0.85rem;
-    color: #6B7280;
-}
-
-.product-actions {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.product-actions button {
-    flex: 1;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+.brand-logo-selection a {
+    /* The anchor tag wrapping the image */
+    display: block;
+    line-height: 0;
     transition: var(--transition);
 }
 
-.add-to-cart {
-    background: var(--primary-color);
-    color: white;
+.brand-logo {
+    max-width: 90px; /* Logo size */
+    height: auto;
+    opacity: 0.6; /* Subtle look */
+    filter: grayscale(100%); /* Grayscale effect */
+    transition: var(--transition);
 }
 
-.add-to-cart:hover {
-    background: var(--secondary-color);
+.brand-logo:hover {
+    opacity: 1; /* Full color/opacity on hover */
+    filter: grayscale(0%);
+    transform: scale(1.1); /* Slight enlargement on hover */
 }
 
-.add-to-wishlist {
-    background: var(--light);
-    color: var(--danger-color);
 
-    border: 1px solid var(--border);
+/* RESPONSIVE ADJUSTMENTS for Brand Logos */
+@media (max-width: 768px) {
+    .brand-logo-selection {
+        padding: 1rem 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .brand-title {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .logo-grid {
+        gap: 1.5rem; 
+    }
+
+    .brand-logo {
+        max-width: 60px; /* Smaller logos on tablets/mobiles */
+    }
 }
 
-.add-to-wishlist:hover {
-    background: var(--danger-color);
-    color: white;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Features Section */
 .features-section {
@@ -1891,3 +1868,4 @@ header {
         opacity: 1;
         visibility: visible;
     }
+}
