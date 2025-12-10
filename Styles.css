@@ -1462,8 +1462,8 @@ header {
     }
     
     .card-container {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
         padding: 1.5rem 1rem;
     }
     
@@ -1491,16 +1491,25 @@ header {
 }
 
 @media (max-width: 480px) {
-    .card-container {
-        grid-template-columns: 1fr;
-    }
-    
     .hero-content h2 {
         font-size: 1.5rem;
     }
     
     .cost {
         font-size: 1.25rem;
+    }
+    
+    .card-content h5 {
+        font-size: 0.95rem;
+    }
+    
+    .card-content p {
+        font-size: 0.85rem;
+    }
+    
+    .add-to-cart {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
     }
 }
 
