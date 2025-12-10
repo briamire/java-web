@@ -59,6 +59,7 @@ body {
     gap: 0.5rem;
     font-size: 1.5rem;
     cursor: pointer;
+    padding-left: 3rem; /* move logo slightly to the right */
 }
 
 
@@ -976,7 +977,7 @@ header {
     align-items: center;
     gap: 0.75rem;
     color: white;
-    padding-left: 2.5rem; /* move logo slightly to the right */
+    padding-left: 3rem; /* move logo slightly to the right */
 }
 
 .logo i {
