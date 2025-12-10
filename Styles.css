@@ -1718,13 +1718,26 @@ header {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* FIX 1: Make the container wider and centered on mobile to prevent content shift */
+    .product-details-container {
+        max-width: 95%; 
+        margin: 10px auto; 
+    }
+    
+    /* FIX 2: Reduce internal padding to give stacked content more room */
     .product-details-content {
         flex-direction: column;
-        padding: 30px 20px;
+        padding: 20px; /* Reduced from 30px 20px to 20px */
+    }
+
+    /* FIX 3 (Optional): Adjust spacing between stacked elements */
+    .product-details-image {
+        margin-bottom: 10px; 
     }
 
     .product-details-info h2 {
         font-size: 24px;
+        margin-top: 0;
     }
 
     .product-details-price {
