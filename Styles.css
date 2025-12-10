@@ -1462,8 +1462,8 @@ header {
     }
     
     .card-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
         padding: 1.5rem 1rem;
     }
     
@@ -1491,25 +1491,16 @@ header {
 }
 
 @media (max-width: 480px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+    
     .hero-content h2 {
         font-size: 1.5rem;
     }
     
     .cost {
         font-size: 1.25rem;
-    }
-    
-    .card-content h5 {
-        font-size: 0.95rem;
-    }
-    
-    .card-content p {
-        font-size: 0.85rem;
-    }
-    
-    .add-to-cart {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
     }
 }
 
@@ -1771,116 +1762,57 @@ header {
         transform: rotate(-45deg) translate(6px, -6px);
     }
 
-    /* Existing Sidebar Styles */
-.Sidebar {
-    position: fixed;
-    left: -300px;
-    top: 0;
-    width: 300px;
-    height: 100vh;
-    background: white;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-    transition: left 0.3s ease;
-    z-index: 1000;
-    overflow-y: auto;
-}
+    .Sidebar {
+        position: fixed;
+        left: -300px;
+        top: 0;
+        width: 300px;
+        height: 100vh;
+        background: white;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        transition: left 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+    }
 
-.Sidebar.open {
-    left: 0;
-}
+    .Sidebar.open {
+        left: 0;
+    }
 
-.Sidebar-header {
-    padding: 1.5rem;
-    border-bottom: 1px solid #e5e7eb;
-    font-weight: bold;
-    font-size: 1.1rem;
-}
+    .Sidebar-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid #e5e7eb;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
 
-.Sidebar-menu {
-    list-style: none;
-    padding: 1rem 0;
-}
+    .Sidebar-menu {
+        list-style: none;
+        padding: 1rem 0;
+    }
 
-.Sidebar-menu li {
-    padding: 0;
-}
+    .Sidebar-menu li {
+        padding: 0;
+    }
 
-/* ---------------------------------------------------- */
-/* --- AMENDED/NEW STYLES FOR DROPDOWN AND ARROW POSITION --- */
+    .Sidebar-menu a {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        color: #374151;
+        text-decoration: none;
+        transition: background 0.2s;
+    }
 
-.Sidebar-menu a {
-    /* Existing properties */
-    display: flex;
-    align-items: center;
-    /* Removed gap: 1rem; from the original code */
-    padding: 1rem 1.5rem;
-    color: #374151;
-    text-decoration: none;
-    transition: background 0.2s;
-    
-    /* KEY AMENDMENT: Pushes the last item (the arrow) to the far right */
-    justify-content: space-between; 
-}
+    .Sidebar-menu a:hover {
+        background: #f3f4f6;
+    }
 
-.Sidebar-menu a:hover {
-    background: #f3f4f6;
-}
-
-.Sidebar-menu a.active {
-    color: #667eea;
-    background: #f3f4f6;
-}
-
-/* Dropdown Arrow Styling */
-.dropdown-arrow {
-    font-size: 0.8em;
-    transition: transform 0.3s ease;
-}
-
-/* Dropdown container */
-.Sidebar-menu .has-dropdown {
-    position: relative;
-}
-
-/* Dropdown Menu (Nested UL) Styling and Hiding */
-.dropdown-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background-color: #fafafa;
-    border-top: 1px solid #eee;
-    
-    /* Hide the dropdown using max-height for a smooth slide effect */
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out; 
-}
-
-/* Sub-link Styling (Indentation) */
-.dropdown-menu li a {
-    /* Indent the sub-links by increasing padding-left */
-    padding: 0.75rem 1.5rem 0.75rem 3rem; 
-    font-size: 0.95rem;
-    background-color: #fafafa; 
-    color: #555;
-    
-    /* Ensure sub-links align content to the start */
-    justify-content: flex-start; 
-}
-
-.dropdown-menu li a:hover {
-    background: #f0f0f0;
-}
-
-/* Show Dropdown on Hover */
-.has-dropdown:hover > .dropdown-menu {
-    max-height: 300px; /* Must be larger than the content height */
-}
-
-/* Rotate the arrow when the dropdown is open */
-.has-dropdown:hover > a .dropdown-arrow {
-    transform: rotate(180deg);
-}
+    .Sidebar-menu a.active {
+        color: #667eea;
+        background: #f3f4f6;
+    }
 
     .Overlay {
         position: fixed;
