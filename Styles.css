@@ -1599,7 +1599,7 @@ header {
 }
 
 .product-details-content {
-    display: flex;
+    display: flex; /* Image (left) and Info (right) are side-by-side */
     gap: 30px;
     padding: 40px;
 }
@@ -1607,8 +1607,8 @@ header {
 .product-details-image {
     flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* Vertically centers the image */
+    justify-content: center; /* Horizontally centers the image */
 }
 
 .product-details-image img {
@@ -1717,10 +1717,16 @@ header {
 }
 
 /* Responsive Design */
+/* On screens <= 768px, the content will stack (image on top, info below) for better readability. */
 @media (max-width: 768px) {
     .product-details-content {
-        flex-direction: column;
+        flex-direction: column; 
         padding: 30px 20px;
+    }
+
+    .product-details-image {
+        /* Ensure image is centered when stacked */
+        margin-bottom: 20px;
     }
 
     .product-details-info h2 {
