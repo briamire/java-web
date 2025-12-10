@@ -374,3 +374,21 @@ document.querySelectorAll("[data-dropdown-toggle]").forEach(trigger => {
     });
 });
 
+
+//latest update
+
+// 1. Get the h1 element using its ID
+const titleElement = document.getElementById('rotating-title');
+
+// 2. Check if the element was found (good practice)
+if (titleElement) {
+    // 3. Add a 'click' event listener to the element
+    titleElement.addEventListener('click', function() {
+        // 4. Change the current window's location to 'index.html'
+        // This will navigate the user to the new page.
+        window.location.href = 'index.html';
+
+        // Alternative for the current domain:
+        // window.location.assign('index.html');
+    });
+}
