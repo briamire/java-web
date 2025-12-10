@@ -310,24 +310,8 @@ function setupEventListeners() {
                 searchProducts(e.target.value);
             }, 300);
         });
-    }
+    }   
     
-    // Admin Login
-    const userBtn = document.getElementById('user-btn');
-    const adminModal = document.getElementById('admin-modal');
-    const closeAdminModal = document.getElementById('close-admin-modal');
-    
-    if (userBtn) {
-        userBtn.addEventListener('click', () => {
-        adminModal.classList.add('active');
-        });
-    }
-    
-    if (closeAdminModal) {
-        closeAdminModal.addEventListener('click', () => {
-        adminModal.classList.remove('active');
-        });
-    }
     
    
     

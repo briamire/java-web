@@ -285,14 +285,14 @@ body {
 
 /* Section Styles */
 section {
-    padding: 4rem 0;
+    padding: 4rem 0;   
 }
 
 .section-title {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: var(--dark);
+    color: var(--dark);   
 }
 
 /* Categories Grid */
@@ -443,20 +443,6 @@ section {
         max-width: 60px; /* Smaller logos on tablets/mobiles */
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -652,7 +638,8 @@ section {
     color: #9CA3AF;
 }
 
-/* Sidebar cart */
+
+/* Cart Sidebar */
 .sidebar {
     position: fixed;
     top: 0;
