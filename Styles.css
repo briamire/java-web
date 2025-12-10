@@ -976,6 +976,7 @@ header {
     align-items: center;
     gap: 0.75rem;
     color: white;
+    padding-left: 0.5rem; /* move logo slightly to the right */
 }
 
 .logo i {
@@ -1793,7 +1794,7 @@ header {
 .Sidebar-menu a {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 1rem;
     padding: 1rem 1.5rem;
     color: #374151;
