@@ -329,25 +329,7 @@ function setupEventListeners() {
         });
     }
     
-    // Admin Login Form
-    const adminLoginForm = document.getElementById('admin-login-form');
-    if (adminLoginForm) {
-        adminLoginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const username = document.getElementById('admin-username').value;
-            const password = document.getElementById('admin-password').value;
-            
-            // Simple authentication (replace with real authentication)
-            if (username === 'admin' && password === 'admin123') {
-                adminModal.classList.remove('active');
-                document.getElementById('main-content').style.display = 'none';
-                document.getElementById('admin-panel').style.display = 'block';
-                showNotification('Login successful!', 'success');
-            } else {
-                showNotification('Invalid credentials', 'error');
-            }
-        });
-    }
+   
     
     // Contact Form
     const contactForm = document.getElementById('contact-form');
@@ -387,16 +369,7 @@ function setupEventListeners() {
         });
     }
     
-    // Logout Button (for Admin Panel)
-    const logoutBtn = document.getElementById('logout-btn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-            document.getElementById('admin-panel').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-            showNotification('Logged out successfully', 'info');
-        });
-    }
-    
+   
     // Admin Tab Switching (Added for completeness)
     document.querySelectorAll('.admin-tab').forEach(tab => {
         tab.addEventListener('click', () => {
@@ -442,12 +415,12 @@ document.head.appendChild(style);
 
 
 const hamburger = document.getElementById('hamburger');
-const sidebar = document.getElementById('sidebar');
-const overlay = document.getElementById('overlay');
+const Sidebar = document.getElementById('Sidebar');
+const overlay = document.getElementById('Overlay');
 
 function toggleMenu() {
     hamburger.classList.toggle('active');
-    sidebar.classList.toggle('open');
+    Sidebar.classList.toggle('open');
     overlay.classList.toggle('active');
 }
 

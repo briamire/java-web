@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-console.log('HP Products page scripts loaded successfully!'); 
+console.log(' Products page scripts loaded successfully!'); 
 
 
 // Product Details Modal Functions
@@ -353,3 +353,4 @@ document.addEventListener('DOMContentLoaded', function() {
 function openProductModal(element) {
     openProductDetails(element);
 }
+

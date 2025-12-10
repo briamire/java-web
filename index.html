@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore - Premium IT Accessories</title>
+    <title>Capridigital - Premium IT Accessories</title>
     <link rel="stylesheet" href="Styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -18,11 +18,11 @@
     <span></span>
 </button>
 
-<div class="overlay" id="overlay"></div>
+<div class="Overlay" id="Overlay"></div>
 
-<div class="sidebar" id="sidebar">
-    <div class="sidebar-header">HP Products</div>
-    <ul class="sidebar-menu">
+<div class="Sidebar" id="Sidebar">
+    <div class="Sidebar-header">Our Products</div>
+    <ul class="Sidebar-menu">
         <li><a href="#"><span>💻</span> Laptops</a></li>
         <li><a href="#"><span>🖥️</span> Desktops</a></li>
         <li><a href="#"><span>⚙️</span> Workstations</a></li>
@@ -39,7 +39,7 @@
         <div class="header-container">
             <div class="logo">
                 <i class="fas fa-laptop"></i>
-                <h1 id="rotating-title">Nevermind </h1>
+                <h1 id="rotating-title">Capridigital </h1>
             </div>
             
             <nav class="main-nav">
@@ -85,48 +85,7 @@
             </div>
         </section>
 
-         <!-- Category Navigation -->
-    <nav class="category-nav">
-        <div class="category-nav-container">
-            <div class="category-dropdown">
-                <button class="category-btn" onclick="scrollToSection('hp-products')">
-                    HP Products <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="#hp-laptops" onclick="scrollToSection('hp-laptops')">
-                        <i class="fas fa-laptop"></i> Laptops
-                    </a>
-                    <a href="#hp-desktops" onclick="scrollToSection('hp-desktops')">
-                        <i class="fas fa-desktop"></i> Desktops
-                    </a>
-                    <a href="#hp-workstations" onclick="scrollToSection('hp-workstations')">
-                        <i class="fas fa-server"></i> Workstations
-                    </a>
-                    <a href="#hp-all-in-ones" onclick="scrollToSection('hp-all-in-ones')">
-                        <i class="fas fa-tv"></i> All in Ones
-                    </a>
-                    <a href="#hp-monitors" onclick="scrollToSection('hp-monitors')">
-                        <i class="fas fa-desktop"></i> Monitors
-                    </a>
-                    <a href="#hp-printers" onclick="scrollToSection('hp-printers')">
-                        <i class="fas fa-print"></i> Printers
-                    </a>
-                    <a href="#hp-servers" onclick="scrollToSection('hp-servers')">
-                        <i class="fas fa-server"></i> Servers
-                    </a>
-                    <a href="#hp-server-accessories" onclick="scrollToSection('hp-server-accessories')">
-                        <i class="fas fa-cog"></i> Server Accessories
-                    </a>
-                    <a href="#hp-accessories" onclick="scrollToSection('hp-accessories')">
-                        <i class="fas fa-mouse"></i> Accessories
-                    </a>
-                    <a href="#hp-toners" onclick="scrollToSection('hp-toners')">
-                        <i class="fas fa-fill-drip"></i> Toners & Cartridges
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+         
 
         <!-- Categories Section -->
         <section id="categories" class="categories-section">
@@ -307,80 +266,8 @@
                 Proceed to Checkout
             </button>
         </div>
-    </div>
-
-    <!-- Admin Login Modal -->
-    <div id="admin-modal" class="modal">
-        <div class="modal-content">
-            <button class="close-modal" id="close-admin-modal">
-                <i class="fas fa-times"></i>
-            </button>
-            <h3>Admin Login</h3>
-            <form id="admin-login-form">
-                <input type="text" id="admin-username" placeholder="Username" required>
-                <input type="password" id="admin-password" placeholder="Password" required>
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Admin Panel -->
-    <div id="admin-panel" class="admin-panel" style="display: none;">
-        <div class="container">
-            <div class="admin-header">
-                <h2>Admin Panel</h2>
-                <button class="btn btn-secondary" id="logout-btn">Logout</button>
-            </div>
-            
-            <div class="admin-tabs">
-                <button class="admin-tab active" data-tab="products">Products</button>
-                <button class="admin-tab" data-tab="orders">Orders</button>
-                <button class="admin-tab" data-tab="users">Users</button>
-            </div>
-            
-            <div class="admin-content">
-                <!-- Products Tab -->
-                <div id="admin-products" class="admin-tab-content active">
-                    <div class="admin-actions">
-                        <button class="btn btn-primary" id="add-product-btn">
-                            <i class="fas fa-plus"></i> Add Product
-                        </button>
-                    </div>
-                    
-                    <div class="admin-table-container">
-                        <table class="admin-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
-                                    <th>Stock</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-products-tbody">
-                                <!-- Products will be loaded dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                
-                <!-- Orders Tab -->
-                <div id="admin-orders" class="admin-tab-content">
-                    <h3>Orders Management</h3>
-                    <p>Orders management coming soon...</p>
-                </div>
-                
-                <!-- Users Tab -->
-                <div id="admin-users" class="admin-tab-content">
-                    <h3>Users Management</h3>
-                    <p>Users management coming soon...</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div>  
+   
 
    
     <!-- Overlay -->

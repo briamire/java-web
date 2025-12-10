@@ -18,11 +18,11 @@
     <span></span>
 </button>
 
-<div class="overlay" id="overlay"></div>
+<div class="Overlay" id="Overlay"></div>
 
-<div class="sidebar" id="sidebar">
-    <div class="sidebar-header">HP Products</div>
-    <ul class="sidebar-menu">
+<div class="Sidebar" id="Sidebar">
+    <div class="Sidebar-header">Our Products</div>
+    <ul class="Sidebar-menu">
         <li><a href="#"><span>💻</span> Laptops</a></li>
         <li><a href="#"><span>🖥️</span> Desktops</a></li>
         <li><a href="#"><span>⚙️</span> Workstations</a></li>
@@ -39,7 +39,7 @@
         <div class="header-container">
             <div class="logo">
                 <i class="fas fa-laptop"></i>
-                <h1 id="rotating-title">Nevermind </h1>
+                <h1 id="rotating-title">Capridigital </h1>
             </div>              
                     
             
@@ -11701,130 +11701,10 @@
                 Proceed to Checkout
             </button>
         </div>
-    </div>
-
-    <!-- Admin Login Modal -->
-    <div id="admin-modal" class="modal">
-        <div class="modal-content">
-            <button class="close-modal" id="close-admin-modal">
-                <i class="fas fa-times"></i>
-            </button>
-            <h3>Admin Login</h3>
-            <form id="admin-login-form">
-                <input type="text" id="admin-username" placeholder="Username" required>
-                <input type="password" id="admin-password" placeholder="Password" required>
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Admin Panel -->
-    <div id="admin-panel" class="admin-panel" style="display: none;">
-        <div class="container">
-            <div class="admin-header">
-                <h2>Admin Panel</h2>
-                <button class="btn btn-secondary" id="logout-btn">Logout</button>
-            </div>
-            
-            <div class="admin-tabs">
-                <button class="admin-tab active" data-tab="products">Products</button>
-                <button class="admin-tab" data-tab="orders">Orders</button>
-                <button class="admin-tab" data-tab="users">Users</button>
-            </div>
-            
-            <div class="admin-content">
-                <!-- Products Tab -->
-                <div id="admin-products" class="admin-tab-content active">
-                    <div class="admin-actions">
-                        <button class="btn btn-primary" id="add-product-btn">
-                            <i class="fas fa-plus"></i> Add Product
-                        </button>
-                    </div>
-                    
-                    <div class="admin-table-container">
-                        <table class="admin-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
-                                    <th>Stock</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-products-tbody">
-                                <!-- Products will be loaded dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                
-                <!-- Orders Tab -->
-                <div id="admin-orders" class="admin-tab-content">
-                    <h3>Orders Management</h3>
-                    <p onclick="openProductDetails(this)">Orders management coming soon...</p>
-                </div>
-                
-                <!-- Users Tab -->
-                <div id="admin-users" class="admin-tab-content">
-                    <h3>Users Management</h3>
-                    <p onclick="openProductDetails(this)">Users management coming soon...</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Product Modal Admin-->
-    <div id="product-modal" class="modal">
-        <div class="modal-content modal-large">
-            <button class="close-modal" id="close-product-modal">
-                <i class="fas fa-times"></i>
-            </button>
-            <form id="product-form">
-                <h3 id="product-modal-title">Add Product</h3>
-                <input type="hidden" id="product-id">
-                <div class="form-group">
-                    <label>Product Name</label>
-                    <input type="text" id="product-name" required>
-                </div>
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea id="product-description" rows="3" required></textarea>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Category</label>
-                        <select id="product-category" required>
-                            <!-- Categories will be loaded dynamically -->
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Price</label>
-                        <input type="number" id="product-price" step="0.01" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Stock</label>
-                        <input type="number" id="product-stock" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Image URL/Emoji</label>
-                        <input type="text" id="product-image" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Rating</label>
-                    <input type="number" id="product-rating" step="0.1" min="0" max="5" value="4.5">
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Save Product</button>
-            </form>
-        </div>
-    </div>         
-    
-    
+    </div>  
+          
+               
+   
    
     <!-- Product Details Overlay -->
 <div id="productDetailsOverlay" class="product-details-overlay">
