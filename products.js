@@ -354,3 +354,39 @@ function openProductModal(element) {
     openProductDetails(element);
 }
 
+
+
+//NEW
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all main links that control a dropdown using the data attribute
+    const dropdownToggles = document.querySelectorAll('[data-dropdown-toggle]');
+
+    dropdownToggles.forEach(toggle => {
+        // Find the parent LI which holds the 'has-dropdown' class
+        const parentLi = toggle.closest('.has-dropdown');
+
+        toggle.addEventListener('click', (event) => {
+            // Prevent the link from navigating 
+            event.preventDefault(); 
+            
+            // Close any currently open dropdowns before opening the new one
+            closeOtherDropdowns(parentLi);
+            
+            // Toggle the 'open' class on the parent LI
+            parentLi.classList.toggle('open');
+        });
+    });
+
+    /**
+     * Closes all dropdowns except the one currently being clicked.
+     * @param {HTMLElement} currentOpenLi - The list item currently being opened/closed.
+     */
+    function closeOtherDropdowns(currentOpenLi) {
+        document.querySelectorAll('.has-dropdown.open').forEach(li => {
+            // Only remove the 'open' class if the item is NOT the current one
+            if (li !== currentOpenLi) {
+                li.classList.remove('open');
+            }
+        });
+    }
+});
