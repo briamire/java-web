@@ -919,7 +919,7 @@ section {
 }
 
 /* Reset and Base Styles for products page */
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -1111,7 +1111,7 @@ header {
     box-shadow: var(--shadow);
     position: sticky;
     top: 80px;
-    z-index: 999;   
+    z-index: 999; 
     
 }
 
@@ -1120,7 +1120,7 @@ header {
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
-    gap: 1rem;    
+    gap: 1rem;     
 }
 
 .category-dropdown {
@@ -1191,14 +1191,14 @@ header {
 
 /* Category Section */
 .category {
-   
+    
     margin: 0 auto;
-   /* padding: 3rem 2rem;*/
-   
+    /* padding: 3rem 2rem;*/
+    
 }
 
 .category-header {
-     
+      
     text-align: center;
     margin-bottom: 3rem;
 }
@@ -1223,7 +1223,7 @@ header {
     max-width: 1400px;
     margin-bottom: 4rem;
     scroll-margin-top: 150px;
-    margin: 0 auto;   
+    margin: 0 auto;     
 }
 
 .section-title {
@@ -1463,8 +1463,9 @@ header {
         -webkit-overflow-scrolling: touch;
     }
     
+    /* MODIFICATION 1: Set to 2 columns for screens up to 768px */
     .card-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); 
         gap: 1.5rem;
         padding: 1.5rem 1rem;
     }
@@ -1493,8 +1494,9 @@ header {
 }
 
 @media (max-width: 480px) {
+    /* MODIFICATION 2: Ensure 2 columns for smaller phone screens */
     .card-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .hero-content h2 {
@@ -1503,6 +1505,19 @@ header {
     
     .cost {
         font-size: 1.25rem;
+    }
+    
+    /* The card content/padding is also shrunk to fit better */
+    .card-content {
+        padding: 0.75rem;
+    }
+
+    .card-content h5 {
+        font-size: 1rem;
+    }
+
+    .card-content p {
+        font-size: 0.8rem;
     }
 }
 
