@@ -136,24 +136,35 @@
             </div>
                    
             
-            <div class="card-container">
-                <div class="card" data-category="notebook">
-                    <div class="card-badge">New</div>
-                    <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="HP Laptop" onclick="openProductDetails(this)" >
-                    <div class="card-content">
-                        <h5 onclick="openProductDetails(this)" >HP NoteBook15 DW3037NIA</h5>
-                        <p onclick="openProductDetails(this)" >Core i7-1135G7 quad | 8GB RAM | 512GB SSD | 15.6" Inches | WIN 10 H | Jet Black Mesh Knit</p>
-                        <div class="card-footer">
-                            <div class="cost"> KES 89,500 </div>
-                            <button class="add-to-cart" onclick="addToCart(this, 'HP NoteBook15 DW3037NIA', 89500)">
-                                <i class="fas fa-shopping-cart"></i> Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>                      
+           <div class="card-container">
+    <div class="card" data-category="notebook">
+        <div class="card-badge">New</div>
+        
+        <!-- Wishlist Button -->
+        <button class="card-wishlist-btn" onclick="toggleWishlist(this, 'HP NoteBook15 DW3037NIA', 89500, 'Images/HP NoteBook15 DW3037NIA.jpg')">
+            <i class="far fa-heart"></i>
+        </button>
+        
+        <img src="Images/HP NoteBook15 DW3037NIA.jpg" alt="HP Laptop" onclick="openProductDetails(this)">
+        
+        <div class="card-content">
+            <h5 onclick="openProductDetails(this)">HP NoteBook15 DW3037NIA</h5>
+            <p onclick="openProductDetails(this)">Core i7-1135G7 quad | 8GB RAM | 512GB SSD | 15.6" Inches | WIN 10 H | Jet Black Mesh Knit</p>
+            <div class="card-footer">
+                <div class="cost">KES 89,500</div>
+                <button class="add-to-cart" onclick="addToCart(this, 'HP NoteBook15 DW3037NIA', 89500)">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+                    
 
                
                 <div class="card" data-category="notebook">
+                    <button class="card-wishlist-btn" onclick="toggleWishlist(this, 'HP NoteBook15 DW1279NIA', 62000, 'Images/HP NoteBook15 DW1279NIA.avif')">
+            <i class="far fa-heart"></i>
+        </button>
                     <img src="Images/HP NoteBook15 DW1279NIA.avif" alt="HP Laptop" onclick="openProductDetails(this)">
                     <div class="card-content">
                         <h5 onclick="openProductDetails(this)" >HP NoteBook15 DW1279NIA</h5>
@@ -11696,7 +11707,8 @@
                
    
    
-    <!-- Product Details Overlay -->
+    
+<!-- Product Details Overlay -->
 <div id="productDetailsOverlay" class="product-details-overlay">
     <div class="product-details-container">
         <button class="product-details-close" onclick="closeProductDetails()">&times;</button>
@@ -11712,6 +11724,9 @@
                     <div class="product-details-buttons">
                         <button class="product-details-add-cart" id="productDetailsAddBtn">
                             <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="product-details-wishlist" id="productDetailsWishlistBtn">
+                            <i class="far fa-heart"></i> <span id="wishlistBtnText">Add to Wishlist</span>
                         </button>
                         <button class="product-details-whatsapp" id="productDetailsWhatsAppBtn">
                             <i class="fab fa-whatsapp"></i> Order on WhatsApp

@@ -68,7 +68,7 @@ body {
         top: 1.5rem;
         transform: translateY(-50%);
         z-index: 1001;
-        /*margin-right: 0.25rem; /* Space between hamburger and logo */
+        margin-right: 0.25rem; /* Space between hamburger and logo */
     }
 
     .hamburger span {
@@ -331,6 +331,25 @@ body {
     font-size: 0.7rem;
     font-weight: bold;
 }
+
+.Overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+    }
+
+    .Overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
 
 /* Hero Section */
 .hero {
@@ -1137,37 +1156,8 @@ header {
     text-align: center;
 }
 
-/*.hamburger {
-    display: none;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-
-.hamburger-inner {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background: white;
-    position: relative;
-}
-
-.hamburger-inner::before,
-.hamburger-inner::after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 2px;
-    background: white;
-}
-
-.hamburger-inner::before {
-    top: -8px;
-}
-
-.hamburger-inner::after {
-    top: 8px;
-}
+/*.hamburger */
+   
 
 /* Hero Section */
 .hero {
@@ -1285,7 +1275,6 @@ header {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
     padding: 2rem 1rem;   
-
 }
 
 /* Card Styles */
@@ -1314,6 +1303,60 @@ header {
     font-size: 0.8rem;
     font-weight: 600;
     z-index: 10;
+}
+
+/* Wishlist button on card */
+.card-wishlist-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card-wishlist-btn i {
+    font-size: 18px;
+    color: #e91e63;
+    transition: all 0.3s ease;
+}
+
+.card-wishlist-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+}
+
+.card-wishlist-btn.in-wishlist i {
+    color: #e91e63;
+}
+
+.card-wishlist-btn:not(.in-wishlist) i {
+    color: #ccc;
+}
+
+.card-wishlist-btn.in-wishlist {
+    animation: heartBeat 0.3s ease;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.3);
+    }
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 .card img {
@@ -1679,9 +1722,10 @@ header {
 }
 
 .product-details-add-cart,
+.product-details-wishlist,
 .product-details-whatsapp {
     flex: 1;
-    min-width: 180px;
+    min-width: 150px;
     border: none;
     padding: 15px 25px;
     border-radius: 8px;
@@ -1707,6 +1751,24 @@ header {
     box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
 }
 
+.product-details-wishlist {
+    background: #fff;
+    color: #e91e63;
+    border: 2px solid #e91e63;
+}
+
+.product-details-wishlist:hover {
+    background: #e91e63;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
+}
+
+.product-details-wishlist.in-wishlist {
+    background: #e91e63;
+    color: white;
+}
+
 .product-details-whatsapp {
     background: #25D366;
     color: white;
@@ -1719,28 +1781,30 @@ header {
 }
 
 .product-details-add-cart i,
+.product-details-wishlist i,
 .product-details-whatsapp i {
     font-size: 18px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-
     .product-details-container {
-    max-width: 95%; /* Makes the modal almost full width */
-    margin: 10px auto; /* Centers the container in the viewport */
+        max-width: 95%;
+        margin: 10px auto;
     }
+    
     .product-details-content {
         flex-direction: column;
         padding: 30px 20px;
     }
 
     .product-details-image {
-        margin-bottom: 10px; /* Added to create space between the image and stacked text */ 
+        margin-bottom: 10px;
+    }
 
     .product-details-info h2 {
         font-size: 24px;
-        margin-top: 0; /* Added to pull title up, assuming it stacks immediately after the image */
+        margin-top: 0;
     }
 
     .product-details-price {
@@ -1752,152 +1816,73 @@ header {
     }
 
     .product-details-add-cart,
+    .product-details-wishlist,
     .product-details-whatsapp {
         width: 100%;
         min-width: auto;
     }
-}
-/* latest addition */
- /* Left Sidebar menu */
- .hamburger {
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        padding: 0.5rem;
+
+    .card-container {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 1.5rem;
+        padding: 1.5rem 1rem;
         display: flex;
+    }
+    
+    .card img {
+        height: 200px;
+    }
+    
+    .card-content {
+        padding: 1rem;
+    }
+    
+    .card-footer {
         flex-direction: column;
-        gap: 4px;
-        position: relative;
-        left: 1rem;
-        top: 1.5rem;
-        transform: translateY(-50%);
-        z-index: 1001;
-        /*margin-right: 0.25rem; /* Space between hamburger and logo */
+        align-items: stretch;
     }
-
-    .hamburger span {
-        display: block;
-        width: 25px;
-        height: 3px;
-        background: white;
-        border-radius: 2px;
-        transition: all 0.3s ease;
-    }
-
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    /* Sidebar Container and Layout */
-.Sidebar {
-    position: fixed;
-    left: -300px;
-    top: 0;
-    width: 300px;
-    height: 100vh;
-    background: white;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-    transition: left 0.3s ease;
-    z-index: 1000;
-    overflow-y: auto;
-}
-
-.Sidebar.open { left: 0; }
-
-.Sidebar-header {
-    padding: 1.5rem;
-    border-bottom: 1px solid #e5e7eb;
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-.Sidebar-menu {
-    list-style: none;
-    padding: 1rem 0;
-}
-
-.Sidebar-menu a {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1rem;
-    padding: 1rem 1.5rem;
-    color: #374151;
-    text-decoration: none;
-    transition: background 0.2s;
-}
-
-.Sidebar-menu a:hover { background: #f3f4f6; }
-
-.Sidebar-menu a.active {
-    color: #667eea;
-    background: #f3f4f6;
-}
-
-/* Caret arrow (⌄) */
-.dropdown-arrow {
-    margin-left: auto;
-    font-size: 1rem;
-    transition: transform 0.3s ease;
-}
-
-
-/* Dropdown container */
-.has-dropdown { position: relative; }
-
-.dropdown-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background: #fafafa;
-    border-top: 1px solid #eee;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-}
-
-.dropdown-menu li a {
-    padding: 0.75rem 1.5rem 0.75rem 3rem;
-    font-size: 0.95rem;
-    color: #555;
-    justify-content: flex-start;
-}
-
-/* Open states */
-.has-dropdown.open > .dropdown-menu {
-    max-height: 300px;
-}
-
-.has-dropdown.open > a .dropdown-arrow {
-    transform: rotate(180deg); /* turns ⌄ into ⌃ */
-}
-
-
-
-.Overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
+    
+    .add-to-cart {
         width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 999;
+        justify-content: center;
+    }
+    
+    .product-section {
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .cost {
+        font-size: 1.25rem;
+    }
+    
+    .card-content {
+        padding: 0.75rem;
     }
 
-    .Overlay.active {
-        opacity: 1;
-        visibility: visible;
+    .card-content h5 {
+        font-size: 1rem;
+    }
+
+    .card-content p {
+        font-size: 0.8rem;
+    }
+
+    .card-wishlist-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .card-wishlist-btn i {
+        font-size: 16px;
     }
 }
