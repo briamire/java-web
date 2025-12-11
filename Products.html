@@ -9,17 +9,11 @@
 </head>
 <body>
 
-    <!-- Header -->
+    
+    <!--header-->
     <header>
 
-<button class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
-
 <div class="Overlay" id="Overlay"></div>
-
 
 <div class="Sidebar" id="Sidebar">
     <div class="Sidebar-header">Our Products</div>
@@ -67,13 +61,22 @@
 
     </ul>
 </div>
-        
+
+
         <div class="header-container">
+
+<button class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<div class="Overlay" id="Overlay"></div>
+
             <div class="logo">
                 <i class="fas fa-laptop"></i>
                 <h1 id="rotating-title">Capridigital </h1>
-            </div>              
-                    
+            </div>
             
             <nav class="main-nav">
                 <a href="index.html">Home</a>
@@ -82,14 +85,13 @@
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
             </nav>
-            
-            <div class="header-actions">
-                <div class="search-box">
-                        <input type="text" placeholder="Search products..." id="searchInput" onkeypress="if(event.key === 'Enter') searchProductsStatic()">
-                   
+                
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search products..."  onkeypress="if(event.key === 'Enter') searchProductsStatic()">
                         <i class="fas fa-search"></i>
                     </div>
-                   <button class="icon-btn" id="wishlist-btn">
+                    <button class="icon-btn" id="wishlist-btn">
                         <i class="far fa-heart"></i>
                         <span class="badge" id="wishlist-count">0</span>
                     </button>
@@ -101,7 +103,6 @@
                         <i class="far fa-user"></i>
                     </button>
                     
-                    </div>
                 </div>
             </div>
         </div>

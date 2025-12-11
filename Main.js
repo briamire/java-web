@@ -354,20 +354,6 @@ function setupEventListeners() {
     }
     
    
-    // Admin Tab Switching (Added for completeness)
-    document.querySelectorAll('.admin-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            
-            document.querySelectorAll('.admin-tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            const target = document.getElementById(`admin-${tab.dataset.tab}`);
-            if (target) target.classList.add('active');
-        });
-    });
 }
 
 // Add CSS for notification animations
@@ -395,6 +381,8 @@ style.textContent = `
         }
     }
 `;
+
+//Our Products Sidebar
 document.head.appendChild(style);
 
 

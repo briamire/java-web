@@ -308,7 +308,7 @@ function closeProductDetails() {
 function orderOnWhatsApp(productName, price, specs) {
     // Your WhatsApp business number (include country code without + or spaces)
     // Example: For Kenya +254712345678, use '254712345678'
-    const phoneNumber = '254112825702'; // Replace with your actual number
+    const phoneNumber = '25745933132'; // Replace with your actual number
     
     // Create the message
     const message = `Hi, I'm interested in ordering:
@@ -356,7 +356,9 @@ function openProductModal(element) {
 
 
 
-//NEW
+//NEW 
+
+//Sidebar Functionality of dropdown menus
 document.querySelectorAll("[data-dropdown-toggle]").forEach(trigger => {
     trigger.addEventListener("click", function (e) {
         e.preventDefault();
@@ -375,7 +377,7 @@ document.querySelectorAll("[data-dropdown-toggle]").forEach(trigger => {
 });
 
 
-//latest update
+//scroll to landing page onpress title
 
 // 1. Get the h1 element using its ID
 const titleElement = document.getElementById('rotating-title');
