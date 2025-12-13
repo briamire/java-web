@@ -356,7 +356,7 @@ function openProductModal(element) {
 
 
 
-//NEW 
+
 
 //Sidebar Functionality of dropdown menus
 document.querySelectorAll("[data-dropdown-toggle]").forEach(trigger => {
