@@ -388,7 +388,7 @@ if (titleElement) {
     titleElement.addEventListener('click', function() {
         // 4. Change the current window's location to 'index.html'
         // This will navigate the user to the new page.
-        window.location.href = 'index.html';
+        window.location.href = '../index.html';
 
         // Alternative for the current domain:
         // window.location.assign('index.html');
