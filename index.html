@@ -217,7 +217,7 @@
             </div>
 
             <!-- Monitors Category -->
-            <div class="category-card" onclick="location.href='Products.html#monitors'">
+            <div class="category-card" onclick="location.href='Products.html#hp-monitors'">
                 <div class="category-icon">
                     <i class="fas fa-desktop"></i>
                 </div>
@@ -267,7 +267,7 @@
             </div>
 
             <!-- Printers Category -->
-            <div class="category-card" onclick="location.href='Products.html#printers'">
+            <div class="category-card" onclick="location.href='Products.html#hp-printers'">
                 <div class="category-icon">
                     <i class="fas fa-print"></i>
                 </div>
@@ -277,7 +277,7 @@
             </div>
 
             <!-- Servers Category -->
-            <div class="category-card" onclick="location.href='Products.html#servers'">
+            <div class="category-card" onclick="location.href='Products.html#dell-servers'">
                 <div class="category-icon">
                     <i class="fas fa-server"></i>
                 </div>
@@ -321,7 +321,7 @@
         <div class="featured-products-grid">
             
             <!-- Product Card 1 -->
-            <div class="featured-card" data-category="sale">
+            <div class="featured-card" data-category="sale" onclick="toggleWishlist(this, 'ROG Strix Gaming Laptop - 17 inch 144Hz  ',  129999, 'Images/product1.jpg')">
                 <div class="featured-badge">-30% OFF</div>
                 <button class="featured-wishlist-btn">
                     <i class="far fa-heart"></i>
@@ -782,6 +782,30 @@
    
     <!-- Overlay -->
     <div id="overlay" class="overlay"></div>
+
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCfNXGJE6l4-98YO2tnkYc_jp2OnO_OmOw",
+    authDomain: "capridigital-cca7f.firebaseapp.com",
+    projectId: "capridigital-cca7f",
+    storageBucket: "capridigital-cca7f.firebasestorage.app",
+    messagingSenderId: "138751957712",
+    appId: "1:138751957712:web:79fc30140b370ea92e1cd5",
+    measurementId: "G-CS4VQ7YZZR"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 
     <script src="Main.js"></script>
     <script src="Admin.js"></script>
