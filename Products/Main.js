@@ -215,21 +215,21 @@ function openProductDetails(element) {
         document.getElementById('wishlistBtnText').textContent = 'Add to Wishlist';
     }
     
-    wishlistBtn.onclick = function() {
-        toggleWishlist(this, title, price, imgSrc);
+    //wishlistBtn.onclick = function() {
+      //  toggleWishlist(this, title, price, imgSrc);
         // Update button state
-        const icon = this.querySelector('i');
-        const text = document.getElementById('wishlistBtnText');
-        if (icon.classList.contains('fas')) {
-            icon.classList.remove('fas');
-            icon.classList.add('far');
-            text.textContent = 'Add to Wishlist';
-        } else {
-            icon.classList.remove('far');
-            icon.classList.add('fas');
-            text.textContent = 'In Wishlist';
-        }
-    };
+        //const icon = this.querySelector('i');
+       // const text = document.getElementById('wishlistBtnText');
+        //if (icon.classList.contains('fas')) {
+          //  icon.classList.remove('fas');
+           // icon.classList.add('far');
+           // text.textContent = 'Add to Wishlist';
+       // } else {
+        //    icon.classList.remove('far');
+          //  icon.classList.add('fas');
+           // text.textContent = 'In Wishlist';
+      //  }
+   // };
     
     // Update WhatsApp button
     const whatsappBtn = document.getElementById('productDetailsWhatsAppBtn');
@@ -254,7 +254,7 @@ function closeProductDetails() {
 
 // Helper function for wishlist check
 function checkIfInWishlist(productName) {
-    const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+   const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
     return wishlist.some(item => item.name === productName);
 }
 
