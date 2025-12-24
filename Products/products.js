@@ -213,6 +213,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //search bar functionality in products
 
+//search bar functionality in products
+
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.search-bar input');
     const searchButton = document.querySelector('.search-bar button');
@@ -221,20 +223,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterMaterials = () => {
         const searchTerm = searchInput.value.toLowerCase().trim();
 
+        // If search is empty, show everything
+        if (searchTerm === '') {
+            categories.forEach(section => {
+                section.style.display = 'block';
+                section.querySelectorAll('.card').forEach(card => {
+                    card.style.display = 'block';
+                });
+            });
+            return;
+        }
+
+        // Filter based on search term
         categories.forEach(section => {
             const cards = section.querySelectorAll('.card');
-            let hasMatches = false;
+            const categoryTitle = section.querySelector('h2, h3, .category-title');
+            const categoryText = categoryTitle ? categoryTitle.textContent.toLowerCase() : '';
+            
+            // Check if category title matches
+            const categoryMatches = categoryText.includes(searchTerm);
+            let hasVisibleCards = false;
 
             cards.forEach(card => {
-                const text = card.textContent.toLowerCase();
-                const isVisible = text.includes(searchTerm);
-                card.style.display = isVisible ? 'block' : 'none';
+                const cardText = card.textContent.toLowerCase();
+                const cardMatches = cardText.includes(searchTerm);
                 
-                if (isVisible) hasMatches = true;
+                // Show card if it matches OR if the category title matches
+                const shouldShow = cardMatches || categoryMatches;
+                card.style.display = shouldShow ? 'block' : 'none';
+                
+                if (shouldShow) hasVisibleCards = true;
             });
 
-            // Show/hide entire category section
-            section.style.display = hasMatches ? 'block' : 'none';
+            // Show category only if it has visible cards or its title matches
+            section.style.display = hasVisibleCards ? 'block' : 'none';
         });
     };
 
@@ -243,21 +265,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') filterMaterials();
     });
     searchInput.addEventListener('input', filterMaterials);
-
-    // Clear search and show all when empty
-    searchInput.addEventListener('input', () => {
-        if (searchInput.value === '') {
-            categories.forEach(section => {
-                section.style.display = 'block';
-                section.querySelectorAll('.card').forEach(card => {
-                    card.style.display = 'block';
-                });
-            });
-        }
-    });
 });
 
-console.log(' Products page scripts loaded successfully!'); 
+console.log('Products page scripts loaded successfully!');
 
 
 // Product Details Modal Functions
