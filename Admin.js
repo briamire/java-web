@@ -305,3 +305,43 @@ function exportProductsCSV() {
 function printProductList() {
     window.print();
 }
+
+
+
+
+//admin.html functionality
+const API_URL = "http://localhost:5000/api/products";
+
+const form = document.getElementById("productForm");
+const status = document.getElementById("status");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const price = document.getElementById("price").value;
+
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, price })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      status.textContent = data.message || "Error adding product";
+      return;
+    }
+
+    status.textContent = "Product added successfully";
+    form.reset();
+
+  } catch (err) {
+    console.error(err);
+    status.textContent = "Server error";
+  }
+});

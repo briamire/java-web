@@ -613,3 +613,10 @@ if (hamburger) {
 if (overlayEl) {
     overlayEl.addEventListener('click', toggleMenu);
 }
+
+fetch("http://localhost:5000/api/products")
+  .then(res => res.json())
+  .then(data => {
+    console.log("Products from backend:", data);
+  })
+  .catch(err => console.error("API error:", err));
