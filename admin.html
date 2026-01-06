@@ -154,6 +154,17 @@
             background: #c82333;
         }
 
+        .btn-cancel {
+            background: #6c757d;
+            color: white;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-cancel:hover {
+            background: #5a6268;
+        }
+
         .btn-add-image {
             background: #28a745;
             color: white;
@@ -332,6 +343,26 @@
             border-radius: 20px;
             font-size: 0.85em;
             margin-bottom: 10px;
+            margin-right: 8px;
+        }
+
+        .product-card .condition {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .product-card .condition.brand-new {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .product-card .condition.ex-uk {
+            background: #fff3cd;
+            color: #856404;
         }
 
         .product-card .stock {
@@ -439,7 +470,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>🖥️ Admin Panel</h1>
+            <h1>🖥️ IT Ecommerce Admin Panel</h1>
             <p>Manage your products, inventory, and store settings</p>
         </header>
 
@@ -451,7 +482,7 @@
                 </div>
                 <div class="stat-card">
                     <h3>Total Value</h3>
-                    <div class="stat-value" id="totalValue">$0</div>
+                    <div class="stat-value" id="totalValue">KES 0</div>
                 </div>
                 <div class="stat-card">
                     <h3>Low Stock Items</h3>
@@ -493,6 +524,15 @@
                                 <option value="Storage">Storage</option>
                                 <option value="Components">Components</option>
                                 <option value="Accessories">Accessories</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productCondition">🏷️ Condition *</label>
+                            <select id="productCondition" required>
+                                <option value="">Select Condition</option>
+                                <option value="Brand New">Brand New</option>
+                                <option value="Ex-UK">Ex-UK</option>
                             </select>
                         </div>
 
@@ -557,7 +597,7 @@ Storage: 512GB SSD"></textarea>
 
     <script>
         // API Base URL - Update this to match your backend port
-        const API_URL = 'http://localhost:5000/api';
+        const API_URL = 'http://api';
         
         let products = [];
         let editingId = null;
@@ -610,6 +650,7 @@ Storage: 512GB SSD"></textarea>
             grid.innerHTML = filteredProducts.map(product => {
                 const images = product.images || [];
                 const mainImage = images[0] || 'https://via.placeholder.com/300x200?text=No+Image';
+                const conditionClass = product.condition === 'Brand New' ? 'brand-new' : 'ex-uk';
                 
                 return `
                 <div class="product-card">
@@ -628,6 +669,7 @@ Storage: 512GB SSD"></textarea>
                         </div>
                     ` : ''}
                     <span class="category">${product.category}</span>
+                    <span class="condition ${conditionClass}">${product.condition || 'N/A'}</span>
                     <h3>${product.name}</h3>
                     <p>${product.description || 'No description available'}</p>
                     ${product.specs ? `<p><strong>Specs:</strong> ${product.specs.split('\n')[0]}</p>` : ''}
@@ -652,6 +694,7 @@ Storage: 512GB SSD"></textarea>
             document.getElementById('productName').value = product.name;
             document.getElementById('productPrice').value = product.price;
             document.getElementById('productCategory').value = product.category;
+            document.getElementById('productCondition').value = product.condition || '';
             document.getElementById('productStock').value = product.stock || 0;
             document.getElementById('productDescription').value = product.description || '';
             document.getElementById('productSpecs').value = product.specs || '';
@@ -682,7 +725,7 @@ Storage: 512GB SSD"></textarea>
 
             document.getElementById('formTitle').textContent = '✏️ Edit Product';
             document.getElementById('submitBtn').textContent = 'Update Product';
-            document.getElementById('cancelBtn').style.display = 'inline-block';
+            document.getElementById('cancelBtn').style.display = 'block';
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -722,6 +765,7 @@ Storage: 512GB SSD"></textarea>
                 name: document.getElementById('productName').value,
                 price: parseFloat(document.getElementById('productPrice').value),
                 category: document.getElementById('productCategory').value,
+                condition: document.getElementById('productCondition').value,
                 stock: parseInt(document.getElementById('productStock').value),
                 images: images,
                 description: document.getElementById('productDescription').value,

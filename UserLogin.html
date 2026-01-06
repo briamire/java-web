@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .icon-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .icon-btn i {
+            font-size: 1.5em;
+            color: #667eea;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .login-modal {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s ease-out;
+            position: relative;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            color: #999;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header i {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .login-header h2 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        .password-toggle:hover {
+            color: #667eea;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .remember-me label {
+            color: #666;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-login:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-login:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .alert {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 25px 0;
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .divider span {
+            padding: 0 15px;
+        }
+
+        .signup-link {
+            text-align: center;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .signup-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .user-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 10px;
+            min-width: 200px;
+            z-index: 998;
+        }
+
+        .user-menu.active {
+            display: block;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .user-menu-header {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 10px;
+        }
+
+        .user-menu-header p {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .user-menu-header small {
+            color: #999;
+            font-size: 0.85em;
+        }
+
+        .user-menu-item {
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .user-menu-item:hover {
+            background: #f5f5f5;
+        }
+
+        .user-menu-item i {
+            color: #667eea;
+            width: 20px;
+        }
+
+        .user-menu-item.logout {
+            color: #dc3545;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 5px;
+        }
+
+        .user-menu-item.logout i {
+            color: #dc3545;
+        }
+
+        @media (max-width: 500px) {
+            .login-modal {
+                padding: 30px 20px;
+            }
+
+            .login-header h2 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- User Icon Button -->
+    <button class="icon-btn" id="user-btn">
+        <i class="far fa-user"></i>
+    </button>
+
+    <!-- User Menu (shown when logged in) -->
+    <div class="user-menu" id="user-menu">
+        <div class="user-menu-header">
+            <p id="user-name-display">Loading...</p>
+            <small id="user-email-display">email@example.com</small>
+        </div>
+        <a href="#" class="user-menu-item" id="profile-link">
+            <i class="far fa-user"></i>
+            <span>My Profile</span>
+        </a>
+        <a href="#" class="user-menu-item" id="orders-link">
+            <i class="fas fa-shopping-bag"></i>
+            <span>My Orders</span>
+        </a>
+        <a href="admin.html" class="user-menu-item" id="admin-link" style="display: none;">
+            <i class="fas fa-crown"></i>
+            <span>Admin Panel</span>
+        </a>
+        <div class="user-menu-item logout" id="logout-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="login-modal">
+        <div class="login-modal">
+            <button class="close-btn" id="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="login-header">
+                <i class="fas fa-user-circle"></i>
+                <h2>Welcome Back</h2>
+                <p>Login to access your account</p>
+            </div>
+
+            <div class="alert alert-error" id="alert-box"></div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="far fa-envelope"></i>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <button type="button" class="password-toggle" id="toggle-password">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn-login" id="login-btn">Login</button>
+            </form>
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <div class="signup-link">
+                Don't have an account? <a href="#">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API Configuration
+        const API_URL = 'http://localhost:5000/api';
+
+        // DOM Elements
+        const userBtn = document.getElementById('user-btn');
+        const loginModal = document.getElementById('login-modal');
+        const closeModal = document.getElementById('close-modal');
+        const loginForm = document.getElementById('login-form');
+        const alertBox = document.getElementById('alert-box');
+        const togglePassword = document.getElementById('toggle-password');
+        const passwordInput = document.getElementById('password');
+        const userMenu = document.getElementById('user-menu');
+        const logoutBtn = document.getElementById('logout-btn');
+        const adminLink = document.getElementById('admin-link');
+
+        // Check if user is already logged in
+        checkAuthStatus();
+
+        // Event Listeners
+        userBtn.addEventListener('click', () => {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (isLoggedIn) {
+                userMenu.classList.toggle('active');
+            } else {
+                loginModal.classList.add('active');
+            }
+        });
+
+        closeModal.addEventListener('click', () => {
+            loginModal.classList.remove('active');
+        });
+
+        loginModal.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.classList.remove('active');
+            }
+        });
+
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            const icon = togglePassword.querySelector('i');
+            icon.classList.toggle('fa-eye');
+            icon.classList.toggle('fa-eye-slash');
+        });
+
+        // Close user menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!userMenu.contains(e.target) && !userBtn.contains(e.target)) {
+                userMenu.classList.remove('active');
+            }
+        });
+
+        logoutBtn.addEventListener('click', logout);
+
+        // Login Form Submit
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('remember-me').checked;
+            const loginBtn = document.getElementById('login-btn');
+
+            // Disable button and show loading
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Logging in...';
+
+            try {
+                const response = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message || 'Login failed');
+                }
+
+                // Store authentication data
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userToken', data.token);
+                localStorage.setItem('userId', data.user._id);
+                localStorage.setItem('userName', data.user.name);
+                localStorage.setItem('userEmail', data.user.email);
+                localStorage.setItem('userRole', data.user.role);
+
+                if (rememberMe) {
+                    localStorage.setItem('rememberMe', 'true');
+                }
+
+                showAlert('Login successful! Redirecting...', 'success');
+
+                // Check if user is admin and redirect
+                setTimeout(() => {
+                    if (data.user.role === 'admin') {
+                        window.location.href = 'admin.html';
+                    } else {
+                        loginModal.classList.remove('active');
+                        updateUIAfterLogin();
+                    }
+                }, 1500);
+
+            } catch (error) {
+                console.error('Login error:', error);
+                showAlert(error.message || 'Login failed. Please check your credentials.', 'error');
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Login';
+            }
+        });
+
+        function showAlert(message, type) {
+            alertBox.textContent = message;
+            alertBox.className = `alert alert-${type} show`;
+            setTimeout(() => {
+                alertBox.classList.remove('show');
+            }, 5000);
+        }
+
+        function checkAuthStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (isLoggedIn) {
+                updateUIAfterLogin();
+            }
+        }
+
+        function updateUIAfterLogin() {
+            const userName = localStorage.getItem('userName');
+            const userEmail = localStorage.getItem('userEmail');
+            const userRole = localStorage.getItem('userRole');
+
+            document.getElementById('user-name-display').textContent = userName;
+            document.getElementById('user-email-display').textContent = userEmail;
+
+            // Change user icon to filled
+            userBtn.querySelector('i').className = 'fas fa-user';
+
+            // Show admin link if user is admin
+            if (userRole === 'admin') {
+                adminLink.style.display = 'flex';
+            }
+        }
+
+        function logout() {
+            // Clear all authentication data
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userToken');
+            localStorage.removeItem('userId');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userRole');
+            localStorage.removeItem('rememberMe');
+
+            // Reset UI
+            userBtn.querySelector('i').className = 'far fa-user';
+            userMenu.classList.remove('active');
+            adminLink.style.display = 'none';
+
+            // Show logout success message
+            showAlert('Logged out successfully!', 'success');
+
+            // Redirect to home page
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

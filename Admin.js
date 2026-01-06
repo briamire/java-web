@@ -310,7 +310,7 @@ function printProductList() {
 
 
 //admin.html functionality
-const API_URL = "http://localhost:5000/api/products";
+const API_URL = "http://api/products";
 
 const form = document.getElementById("productForm");
 const status = document.getElementById("status");
