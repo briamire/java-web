@@ -311,7 +311,7 @@ function printProductList() {
 
 //admin.html functionality
 // UPDATE THIS URL TO YOUR DEPLOYED BACKEND
-const API_URL = 'http://localhost:5000/api/products'; // Change this after deploying backend
+const API_URL = 'https://java-web-gyfu.onrender.com'; // Change this after deploying backend
 
 let products = [];
 let editingId = null;
