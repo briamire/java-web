@@ -396,7 +396,7 @@ if (titleElement) {
 }
 
 // UPDATE THIS URL TO YOUR DEPLOYED BACKEND
-const API_URL = 'http://localhost:5000/api/products';
+const API_URL = 'https://java-web-gyfu.onrender.com/api/products';
 
 // Determine which condition to show based on current page
 const currentPage = window.location.pathname;
