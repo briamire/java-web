@@ -435,3 +435,16 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+
+//force frontend to use deployed backend URL
+fetch(`${API_BASE}/`)
+  .then(res => res.json())
+  .then(data => {
+    console.log("CONNECTED:", data);
+    alert("Backend connected: " + data.message);
+  })
+  .catch(err => {
+    console.error("CONNECTION FAILED:", err);
+    alert("Backend NOT connected");
+  });
