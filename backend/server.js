@@ -10,7 +10,7 @@ const app = express();
 // Middleware
 app.use(cors({
   // This pulls the Vercel link you just added to Render's Env Vars
-  origin: process.env.FRONTEND_URL || '*', 
+  origin: process.env.FRONTEND_URL, 
   credentials: true
 }));
 app.use(express.json());
