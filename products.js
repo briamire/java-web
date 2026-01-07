@@ -395,4 +395,160 @@ if (titleElement) {
     });
 }
 
+// UPDATE THIS URL TO YOUR DEPLOYED BACKEND
+const API_URL = 'http://localhost:5000/api/products';
 
+// Determine which condition to show based on current page
+const currentPage = window.location.pathname;
+const CONDITION = currentPage.includes('exuk') ? 'Ex-UK' : 'Brand New';
+
+let allProducts = [];
+let filteredProducts = [];
+
+// Fetch products from backend
+async function fetchProducts() {
+  try {
+    const response = await fetch(`${API_URL}?condition=${CONDITION}`);
+    
+    if (!response.ok) {
+      throw new Error('Failed to fetch products');
+    }
+    
+    allProducts = await response.json();
+    filteredProducts = allProducts;
+    renderProducts(filteredProducts);
+    updateCategoryFilter();
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    showErrorMessage('Failed to load products. Please check your connection.');
+  }
+}
+
+// Render products to the page
+function renderProducts(products) {
+  const container = document.getElementById('dynamic-product-container');
+  
+  if (!container) {
+    console.error('Product container not found');
+    return;
+  }
+  
+  if (products.length === 0) {
+    container.innerHTML = `
+      <div class="col-12 text-center py-5">
+        <i class="fas fa-box-open fa-3x text-muted mb-3"></i>
+        <h4>No products found</h4>
+        <p class="text-muted">Try adjusting your filters or check back later.</p>
+      </div>
+    `;
+    return;
+  }
+  
+  container.innerHTML = products.map(product => `
+    <div class="col-md-4 mb-4">
+      <div class="card product-card h-100">
+        <img src="${product.image?.[0] || 'images/placeholder.jpg'}" 
+             class="card-img-top" 
+             alt="${product.name}"
+             onerror="this.src='images/placeholder.jpg'">
+        <div class="card-body d-flex flex-column">
+          <span class="badge bg-${CONDITION === 'Brand New' ? 'success' : 'info'} mb-2 align-self-start">
+            ${product.condition}
+          </span>
+          <h5 class="card-title">${product.name}</h5>
+          <p class="card-text text-muted">${product.category}</p>
+          <p class="card-text small">${product.description || 'No description available'}</p>
+          <div class="mt-auto">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="h5 mb-0 text-primary">KES ${product.price.toLocaleString()}</span>
+              ${product.stock > 0 
+                ? `<span class="badge bg-success">In Stock</span>` 
+                : `<span class="badge bg-danger">Out of Stock</span>`
+              }
+            </div>
+            <button class="btn btn-primary w-100 mt-2" 
+                    onclick="viewProduct('${product._id}')"
+                    ${product.stock === 0 ? 'disabled' : ''}>
+              <i class="fas fa-eye"></i> View Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Update category filter dropdown
+function updateCategoryFilter() {
+  const categories = [...new Set(allProducts.map(p => p.category))];
+  const filterContainer = document.getElementById('categoryFilter');
+  
+  if (filterContainer) {
+    filterContainer.innerHTML = `
+      <option value="all">All Categories</option>
+      ${categories.map(cat => `<option value="${cat}">${cat}</option>`).join('')}
+    `;
+  }
+}
+
+// Filter products by category
+function filterProducts(category) {
+  if (category === 'all') {
+    filteredProducts = allProducts;
+  } else {
+    filteredProducts = allProducts.filter(p => p.category === category);
+  }
+  renderProducts(filteredProducts);
+}
+
+// Search products
+function searchProducts(searchTerm) {
+  const term = searchTerm.toLowerCase();
+  filteredProducts = allProducts.filter(p => 
+    p.name.toLowerCase().includes(term) ||
+    p.description?.toLowerCase().includes(term) ||
+    p.category.toLowerCase().includes(term)
+  );
+  renderProducts(filteredProducts);
+}
+
+// View product details
+function viewProduct(id) {
+  // For now, just alert. You can create a modal or detail page later
+  const product = allProducts.find(p => p._id === id);
+  if (product) {
+    alert(`Product: ${product.name}\nPrice: KES ${product.price}\nDescription: ${product.description || 'N/A'}`);
+    // TODO: Navigate to product detail page or show modal
+  }
+}
+
+// Show error message
+function showErrorMessage(message) {
+  const container = document.getElementById('dynamic-product-container');
+  if (container) {
+    container.innerHTML = `
+      <div class="col-12">
+        <div class="alert alert-danger" role="alert">
+          <i class="fas fa-exclamation-triangle"></i> ${message}
+        </div>
+      </div>
+    `;
+  }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+  fetchProducts();
+  
+  // Setup search if search input exists
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => searchProducts(e.target.value));
+  }
+  
+  // Setup category filter if it exists
+  const categoryFilter = document.getElementById('categoryFilter');
+  if (categoryFilter) {
+    categoryFilter.addEventListener('change', (e) => filterProducts(e.target.value));
+  }
+});

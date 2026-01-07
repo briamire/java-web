@@ -1,30 +1,31 @@
 const express = require("express");
 const router = express.Router();
+const {
+  getProducts,
+  getProductById,
+  createProduct,
+  updateProduct,
+  deleteProduct
+} = require("../controllers/productController");
 
-// Temporary in-memory store (Mongo later)
-let products = [];
+// GET products (with optional filters)
+// Examples: 
+// /api/products - all products
+// /api/products?condition=Ex-UK - only Ex-UK products
+// /api/products?category=HP Products - only HP products
+// /api/products?condition=Brand New&category=HP Laptops - filtered by both
+router.get("/", getProducts);
 
-// GET products
-router.get("/", (req, res) => {
-  res.json(products);
-});
+// GET single product by ID
+router.get("/:id", getProductById);
 
 // ADD product (admin action)
-router.post("/", (req, res) => {
-  const { name, price } = req.body;
+router.post("/", createProduct);
 
-  if (!name || !price) {
-    return res.status(400).json({ message: "Missing fields" });
-  }
+// UPDATE product
+router.put("/:id", updateProduct);
 
-  const newProduct = {
-    id: Date.now(),
-    name,
-    price
-  };
-
-  products.push(newProduct);
-  res.status(201).json(newProduct);
-});
+// DELETE product
+router.delete("/:id", deleteProduct);
 
 module.exports = router;

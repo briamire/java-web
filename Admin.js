@@ -310,38 +310,239 @@ function printProductList() {
 
 
 //admin.html functionality
-const API_URL = "http://api/products";
+// UPDATE THIS URL TO YOUR DEPLOYED BACKEND
+const API_URL = 'http://localhost:5000/api/products'; // Change this after deploying backend
 
-const form = document.getElementById("productForm");
-const status = document.getElementById("status");
+let products = [];
+let editingId = null;
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+// Show alert messages
+function showAlert(message, type = 'success') {
+  const alertContainer = document.getElementById('alertcontainer');
+  const alert = document.createElement('div');
+  alert.className = `alert alert-${type}`;
+  alert.textContent = message;
+  alertContainer.innerHTML = '';
+  alertContainer.appendChild(alert);
+  setTimeout(() => alert.remove(), 3000);
+}
 
-  const name = document.getElementById("name").value;
-  const price = document.getElementById("price").value;
+// Update statistics
+function updateStats() {
+  document.getElementById('totalProducts').textContent = products.length;
+  
+  const totalValue = products.reduce((sum, p) => sum + (p.price * (p.stock || 0)), 0);
+  document.getElementById('totalValue').textContent = `KES ${totalValue.toLocaleString()}`;
+  
+  const lowStock = products.filter(p => p.stock > 0 && p.stock < 10).length;
+  document.getElementById('lowStock').textContent = lowStock;
+  
+  const categories = new Set(products.map(p => p.category));
+  document.getElementById('totalCategories').textContent = categories.size;
+}
 
+// Fetch products from backend
+async function fetchProducts() {
   try {
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, price })
-    });
+    const response = await fetch(API_URL);
+    if (!response.ok) throw new Error('Failed to fetch products');
+    products = await response.json();
+    renderProducts();
+    updateStats();
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    showAlert('Failed to load products. Please check backend connection.', 'danger');
+  }
+}
 
-    const data = await res.json();
+// Render products table
+function renderProducts() {
+  const container = document.getElementById('dynamic-product-container');
+  
+  if (products.length === 0) {
+    container.innerHTML = '<tr><td colspan="7" class="text-center">No products found</td></tr>';
+    return;
+  }
+  
+  container.innerHTML = products.map(product => `
+    <tr>
+      <td>
+        <img src="${product.image?.[0] || 'placeholder.jpg'}" 
+             alt="${product.name}" 
+             style="width: 50px; height: 50px; object-fit: cover;">
+      </td>
+      <td>${product.name}</td>
+      <td>KES ${product.price.toLocaleString()}</td>
+      <td>${product.category}</td>
+      <td><span class="badge bg-${product.condition === 'Brand New' ? 'success' : 'info'}">${product.condition}</span></td>
+      <td>${product.stock || 0}</td>
+      <td>
+        <button class="btn btn-sm btn-warning" onclick="editProduct('${product._id}')">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button class="btn btn-sm btn-danger" onclick="deleteProduct('${product._id}')">
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  `).join('');
+}
 
-    if (!res.ok) {
-      status.textContent = data.message || "Error adding product";
-      return;
+// Handle form submission
+document.getElementById('productForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const formData = {
+    name: document.getElementById('productName').value,
+    price: parseFloat(document.getElementById('productPrice').value),
+    category: document.getElementById('productCategory').value,
+    condition: document.getElementById('productCondition').value,
+    description: document.getElementById('productDescription').value,
+    stock: parseInt(document.getElementById('productStock').value) || 0,
+    image: Array.from(document.querySelectorAll('.image-url-input'))
+      .map(input => input.value)
+      .filter(url => url.trim() !== '')
+  };
+  
+  try {
+    let response;
+    if (editingId) {
+      // Update existing product
+      response = await fetch(`${API_URL}/${editingId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+    } else {
+      // Create new product
+      response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
     }
-
-    status.textContent = "Product added successfully";
-    form.reset();
-
-  } catch (err) {
-    console.error(err);
-    status.textContent = "Server error";
+    
+    if (!response.ok) throw new Error('Failed to save product');
+    
+    showAlert(editingId ? 'Product updated successfully!' : 'Product added successfully!');
+    editingId = null;
+    document.getElementById('productForm').reset();
+    document.getElementById('imageUrlContainer').innerHTML = `
+      <div class="input-group mb-2">
+        <input type="url" class="form-control image-url-input" placeholder="https://example.com/image1.jpg">
+        <button type="button" class="btn btn-danger" onclick="this.parentElement.remove()">×</button>
+      </div>
+    `;
+    fetchProducts();
+  } catch (error) {
+    console.error('Error saving product:', error);
+    showAlert('Failed to save product', 'danger');
   }
 });
+
+// Edit product
+async function editProduct(id) {
+  const product = products.find(p => p._id === id);
+  if (!product) return;
+  
+  editingId = id;
+  document.getElementById('productName').value = product.name;
+  document.getElementById('productPrice').value = product.price;
+  document.getElementById('productCategory').value = product.category;
+  document.getElementById('productCondition').value = product.condition;
+  document.getElementById('productDescription').value = product.description || '';
+  document.getElementById('productStock').value = product.stock || 0;
+  
+  // Set image URLs
+  const container = document.getElementById('imageUrlContainer');
+  container.innerHTML = product.image.map(url => `
+    <div class="input-group mb-2">
+      <input type="url" class="form-control image-url-input" value="${url}">
+      <button type="button" class="btn btn-danger" onclick="this.parentElement.remove()">×</button>
+    </div>
+  `).join('');
+  
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Delete product
+async function deleteProduct(id) {
+  if (!confirm('Are you sure you want to delete this product?')) return;
+  
+  try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: 'DELETE'
+    });
+    
+    if (!response.ok) throw new Error('Failed to delete product');
+    
+    showAlert('Product deleted successfully!');
+    fetchProducts();
+  } catch (error) {
+    console.error('Error deleting product:', error);
+    showAlert('Failed to delete product', 'danger');
+  }
+}
+
+// Add image URL input
+function addImageUrl() {
+  const container = document.getElementById('imageUrlContainer');
+  const div = document.createElement('div');
+  div.className = 'input-group mb-2';
+  div.innerHTML = `
+    <input type="url" class="form-control image-url-input" placeholder="https://example.com/image.jpg">
+    <button type="button" class="btn btn-danger" onclick="this.parentElement.remove()">×</button>
+  `;
+  container.appendChild(div);
+}
+
+// Search products
+function searchProducts() {
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  const filteredProducts = products.filter(p => 
+    p.name.toLowerCase().includes(searchTerm) ||
+    p.category.toLowerCase().includes(searchTerm)
+  );
+  
+  const container = document.getElementById('dynamic-product-container');
+  container.innerHTML = filteredProducts.map(product => `
+    <tr>
+      <td><img src="${product.image?.[0] || 'placeholder.jpg'}" style="width: 50px; height: 50px; object-fit: cover;"></td>
+      <td>${product.name}</td>
+      <td>KES ${product.price.toLocaleString()}</td>
+      <td>${product.category}</td>
+      <td><span class="badge bg-${product.condition === 'Brand New' ? 'success' : 'info'}">${product.condition}</span></td>
+      <td>${product.stock || 0}</td>
+      <td>
+        <button class="btn btn-sm btn-warning" onclick="editProduct('${product._id}')"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-sm btn-danger" onclick="deleteProduct('${product._id}')"><i class="fas fa-trash"></i></button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+// Filter products by category
+function filterProducts(category) {
+  const filtered = category === 'all' 
+    ? products 
+    : products.filter(p => p.category === category);
+  
+  const container = document.getElementById('dynamic-product-container');
+  container.innerHTML = filtered.map(product => `
+    <tr>
+      <td><img src="${product.image?.[0] || 'placeholder.jpg'}" style="width: 50px; height: 50px; object-fit: cover;"></td>
+      <td>${product.name}</td>
+      <td>KES ${product.price.toLocaleString()}</td>
+      <td>${product.category}</td>
+      <td><span class="badge bg-${product.condition === 'Brand New' ? 'success' : 'info'}">${product.condition}</span></td>
+      <td>${product.stock || 0}</td>
+      <td>
+        <button class="btn btn-sm btn-warning" onclick="editProduct('${product._id}')"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-sm btn-danger" onclick="deleteProduct('${product._id}')"><i class="fas fa-trash"></i></button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+// Initialize
+fetchProducts();
