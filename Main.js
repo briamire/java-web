@@ -620,3 +620,8 @@ fetch("http://localhost:5000/api/products")
     console.log("Products from backend:", data);
   })
   .catch(err => console.error("API error:", err));
+
+
+  //constant backend api
+  // Change this in your frontend (e.g., api.js or Admin.js)
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://java-web-gyfu.onrender.com";
