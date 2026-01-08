@@ -150,41 +150,46 @@ fetchProducts();
 
 // Add this to the top of your Admin.js file
 
+// Admin.js
 async function verifyAdmin() {
     const token = localStorage.getItem('adminToken');
     
+    // 1. If no token, don't even try to fetch, just redirect
+    if (!token) {
+        window.location.href = 'admin-login.html';
+        return;
+    }
+
     try {
-        const response = await fetch(`${API_URL}/auth/verify`, {
+        const response = await fetch(`https://java-web-gyfu.onrender.com/api/auth/verify`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`,
+                // IMPORTANT: Ensure there is a space after 'Bearer'
+                'Authorization': 'Bearer ' + token, 
                 'Content-Type': 'application/json'
             }
         });
 
-        if (!response.ok) {
-            throw new Error('Unauthorized');
+        if (response.status === 401 || response.status === 403) {
+            console.error("Token is invalid or expired");
+            localStorage.removeItem('adminToken'); // Clear bad token
+            window.location.href = 'admin-login.html';
+            return;
         }
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Verified successfully:", data);
         
-        console.log("Admin verified successfully");
-        // Initialize your product loading here
-        loadProducts(); 
-        updateStats();
+        // Initialization functions
+        if (typeof loadProducts === 'function') loadProducts();
 
     } catch (error) {
-        console.error('Auth Error:', error);
-        localStorage.removeItem('adminToken');
-        localStorage.removeItem('adminInfo');
-        window.location.href = 'admin-login.html';
+        console.error('Detailed Auth Error:', error);
+        // Temporarily comment out the line below to stop the "Swift" redirect 
+        // window.location.href = 'admin-login.html'; 
     }
-}
-
-// Call verification when page loads
-document.addEventListener('DOMContentLoaded', verifyAdmin);
-
-// Example Logout function you can add to a button
-function logout() {
-    localStorage.removeItem('adminToken');
-    localStorage.removeItem('adminInfo');
-    window.location.href = 'admin-login.html';
 }
