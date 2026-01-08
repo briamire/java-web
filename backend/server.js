@@ -33,3 +33,9 @@ connectDB().then(() => {
 }).catch(err => {
     console.error("Database connection failed", err);
 });
+
+const authMiddleware = require("./Middleware/authMiddleware");
+const authRoutes = require("./routes/authRoutes");
+
+app.use("/api/auth", authRoutes);
+app.use("/api/products", authMiddleware, require("./routes/productRoutes"));

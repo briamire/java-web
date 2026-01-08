@@ -397,10 +397,7 @@
     </style>
 </head>
 <body>
-    <!-- User Icon Button -->
-    <button class="icon-btn" id="user-btn">
-        <i class="far fa-user"></i>
-    </button>
+   
 
     <!-- User Menu (shown when logged in) -->
     <div class="user-menu" id="user-menu">
@@ -427,7 +424,7 @@
     </div>
 
     <!-- Login Modal -->
-    <div class="modal-overlay" id="login-modal">
+   <div class="modal-overlay active" id="login-modal">
         <div class="login-modal">
             <button class="close-btn" id="close-modal">
                 <i class="fas fa-times"></i>
@@ -483,63 +480,67 @@
     </div>
 
    <script>
-    const API_URL = 'https://java-web-gyfu.onrender.com';
-    
-    const loginForm = document.getElementById('loginForm');
-    const alertContainer = document.getElementById('alertContainer');
-    
-    // Check if already logged in
-    if (localStorage.getItem('adminToken')) {
-        window.location.href = 'admin.html';
-    }
-    
-    loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        
-        try {
-            const response = await fetch(`${API_URL}/api/auth/login`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
-            });
-            
-            const data = await response.json();
-            
-            if (response.ok) {
-                localStorage.setItem('adminToken', data.token);
-                localStorage.setItem('adminInfo', JSON.stringify({
-                    username: data.username,
-                    email: data.email,
-                    role: data.role
-                }));
-                
-                showAlert('Login successful! Redirecting...', 'success');
-                
-                setTimeout(() => {
-                    window.location.href = 'admin.html';
-                }, 1000);
-            } else {
-                showAlert(data.message || 'Login failed', 'danger');
-            }
-        } catch (error) {
-            console.error('Login error:', error);
-            showAlert('Connection error. Please check if the server is running.', 'danger');
+    const API_URL = "https://java-web-gyfu.onrender.com";
+
+// Elements
+const loginForm = document.getElementById("login-form");
+const alertBox = document.getElementById("alert-box");
+
+// If already logged in, go straight to admin
+if (localStorage.getItem("adminToken")) {
+    window.location.href = "admin.html";
+}
+
+// Handle login
+loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    alertBox.classList.remove("show", "alert-success");
+    alertBox.classList.add("alert-error");
+    alertBox.textContent = "";
+
+    try {
+        const response = await fetch(`${API_URL}/api/auth/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            alertBox.textContent = data.message || "Invalid credentials";
+            alertBox.classList.add("show");
+            return;
         }
-    });
-    
-    function showAlert(message, type) {
-        alertContainer.innerHTML = `
-            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-                ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        `;
+
+        // Save token
+        localStorage.setItem("adminToken", data.token);
+
+        alertBox.textContent = "Login successful. Redirecting…";
+        alertBox.classList.remove("alert-error");
+        alertBox.classList.add("alert-success", "show");
+
+        setTimeout(() => {
+            window.location.href = "admin.html";
+        }, 700);
+
+    } catch (error) {
+        alertBox.textContent = "Server unreachable. Please try again.";
+        alertBox.classList.add("show");
     }
+});
+
+// Password toggle
+document.getElementById("toggle-password").addEventListener("click", () => {
+    const pwd = document.getElementById("password");
+    pwd.type = pwd.type === "password" ? "text" : "password";
+});
 </script>
 </body>
 </html>
