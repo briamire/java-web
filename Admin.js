@@ -146,3 +146,45 @@ function removeImageInput(btn) {
 /* ================== INIT ================== */
 
 fetchProducts();
+
+
+// Add this to the top of your Admin.js file
+
+async function verifyAdmin() {
+    const token = localStorage.getItem('adminToken');
+    
+    try {
+        const response = await fetch(`${API_URL}/auth/verify`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Unauthorized');
+        }
+        
+        console.log("Admin verified successfully");
+        // Initialize your product loading here
+        loadProducts(); 
+        updateStats();
+
+    } catch (error) {
+        console.error('Auth Error:', error);
+        localStorage.removeItem('adminToken');
+        localStorage.removeItem('adminInfo');
+        window.location.href = 'admin-login.html';
+    }
+}
+
+// Call verification when page loads
+document.addEventListener('DOMContentLoaded', verifyAdmin);
+
+// Example Logout function you can add to a button
+function logout() {
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('adminInfo');
+    window.location.href = 'admin-login.html';
+}

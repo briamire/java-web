@@ -1,4 +1,6 @@
-const express = require("express");
+const express = require('express');
+const productController = require('../controllers/productController'); // or wherever your logic is
+const authMiddleware = require('../Middleware/authMiddleware');
 const router = express.Router();
 const {
   getProducts,
@@ -27,5 +29,16 @@ router.put("/:id", updateProduct);
 
 // DELETE product
 router.delete("/:id", deleteProduct);
+
+module.exports = router;
+
+// backend/routes/productRoutes.js
+// PUBLIC: Anyone can view products
+router.get('/', productController.getProducts);
+
+// PROTECTED: Only logged-in admins can modify data
+router.post('/', authMiddleware, productController.createProduct);
+router.put('/:id', authMiddleware, productController.updateProduct);
+router.delete('/:id', authMiddleware, productController.deleteProduct);
 
 module.exports = router;

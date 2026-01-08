@@ -1,34 +1,23 @@
-const express = require("express");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const Admin = require("../models/Admin");
-
+// backend/routes/authRoutes.js
+const express = require('express');
 const router = express.Router();
+const authMiddleware = require('../Middleware/authMiddleware'); // Your existing middleware
+const Admin = require('../models/Admin'); // Your Admin model
 
-router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+// Verification Route
+router.get('/verify', authMiddleware, async (req, res) => {
+    try {
+        // authMiddleware should have attached the user ID to req.user
+        const admin = await Admin.findById(req.user.id).select('-password');
+        
+        if (!admin) {
+            return res.status(401).json({ message: 'User not found' });
+        }
 
-  try {
-    const admin = await Admin.findOne({ email });
-    if (!admin) {
-      return res.status(401).json({ message: "Invalid credentials" });
+        res.json({ valid: true, admin });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
     }
-
-    const isMatch = await bcrypt.compare(password, admin.password);
-    if (!isMatch) {
-      return res.status(401).json({ message: "Invalid credentials" });
-    }
-
-    const token = jwt.sign(
-      { id: admin._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "2h" }
-    );
-
-    res.json({ token });
-  } catch (err) {
-    res.status(500).json({ message: "Server error" });
-  }
 });
 
 module.exports = router;
