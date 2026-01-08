@@ -5,75 +5,75 @@ const AUTH_API_URL = 'https://java-web-gyfu.onrender.com/api/auth';
 let products = [];
 let editingId = null;
 
-// Check authentication on page load
-checkAuth();
+// // Check authentication on page load
+// checkAuth();
 
-function checkAuth() {
-  const token = localStorage.getItem('adminToken');
-  if (!token) {
-    window.location.href = 'UserLogin.html';
-    return;
-  }
+// function checkAuth() {
+//   const token = localStorage.getItem('adminToken');
+//   if (!token) {
+//     window.location.href = 'UserLogin.html';
+//     return;
+//   }
   
-  // Display admin info
-  const adminInfo = JSON.parse(localStorage.getItem('adminInfo') || '{}');
-  if (adminInfo.username) {
-    const userDisplay = document.getElementById('adminUsername');
-    if (userDisplay) {
-      userDisplay.textContent = adminInfo.username;
-    }
-  }
-}
+//   // Display admin info
+//   const adminInfo = JSON.parse(localStorage.getItem('adminInfo') || '{}');
+//   if (adminInfo.username) {
+//     const userDisplay = document.getElementById('adminUsername');
+//     if (userDisplay) {
+//       userDisplay.textContent = adminInfo.username;
+//     }
+//   }
+// }
 
-// Get auth headers
-function getAuthHeaders() {
-  const token = localStorage.getItem('adminToken');
-  return {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
-  };
-}
+// // Get auth headers
+// function getAuthHeaders() {
+//   const token = localStorage.getItem('adminToken');
+//   return {
+//     'Content-Type': 'application/json',
+//     'Authorization': `Bearer ${token}`
+//   };
+// }
 
-// Logout function
-function logout() {
-  if (confirm('Are you sure you want to logout?')) {
-    localStorage.removeItem('adminToken');
-    localStorage.removeItem('adminInfo');
-    window.location.href = 'UserLogin.html';
-  }
-}
+// // Logout function
+// function logout() {
+//   if (confirm('Are you sure you want to logout?')) {
+//     localStorage.removeItem('adminToken');
+//     localStorage.removeItem('adminInfo');
+//     window.location.href = 'UserLogin.html';
+//   }
+// }
 
-// Show alert messages
-function showAlert(message, type = 'success') {
-  const alertContainer = document.getElementById('alertcontainer');
-  if (!alertContainer) return;
+// // Show alert messages
+// function showAlert(message, type = 'success') {
+//   const alertContainer = document.getElementById('alertcontainer');
+//   if (!alertContainer) return;
   
-  const alert = document.createElement('div');
-  alert.className = `alert alert-${type}`;
-  alert.textContent = message;
-  alertContainer.innerHTML = '';
-  alertContainer.appendChild(alert);
-  setTimeout(() => alert.remove(), 3000);
-}
+//   const alert = document.createElement('div');
+//   alert.className = `alert alert-${type}`;
+//   alert.textContent = message;
+//   alertContainer.innerHTML = '';
+//   alertContainer.appendChild(alert);
+//   setTimeout(() => alert.remove(), 3000);
+// }
 
-// Update statistics
-function updateStats() {
-  const totalProductsEl = document.getElementById('totalProducts');
-  const totalValueEl = document.getElementById('totalValue');
-  const lowStockEl = document.getElementById('lowStock');
-  const totalCategoriesEl = document.getElementById('totalCategories');
+// // Update statistics
+// function updateStats() {
+//   const totalProductsEl = document.getElementById('totalProducts');
+//   const totalValueEl = document.getElementById('totalValue');
+//   const lowStockEl = document.getElementById('lowStock');
+//   const totalCategoriesEl = document.getElementById('totalCategories');
   
-  if (totalProductsEl) totalProductsEl.textContent = products.length;
+//   if (totalProductsEl) totalProductsEl.textContent = products.length;
   
-  const totalValue = products.reduce((sum, p) => sum + (p.price * (p.stock || 0)), 0);
-  if (totalValueEl) totalValueEl.textContent = `KES ${totalValue.toLocaleString()}`;
+//   const totalValue = products.reduce((sum, p) => sum + (p.price * (p.stock || 0)), 0);
+//   if (totalValueEl) totalValueEl.textContent = `KES ${totalValue.toLocaleString()}`;
   
-  const lowStock = products.filter(p => p.stock > 0 && p.stock < 10).length;
-  if (lowStockEl) lowStockEl.textContent = lowStock;
+//   const lowStock = products.filter(p => p.stock > 0 && p.stock < 10).length;
+//   if (lowStockEl) lowStockEl.textContent = lowStock;
   
-  const categories = new Set(products.map(p => p.category));
-  if (totalCategoriesEl) totalCategoriesEl.textContent = categories.size;
-}
+//   const categories = new Set(products.map(p => p.category));
+//   if (totalCategoriesEl) totalCategoriesEl.textContent = categories.size;
+// }
 
 // Fetch products from backend
 async function fetchProducts() {
