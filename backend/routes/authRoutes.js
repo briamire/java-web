@@ -3,15 +3,15 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const authMiddleware = require('../Middleware/authMiddleware');
+const authMiddleware = require('../Middleware/authMiddleware'); 
 const Admin = require('../models/Admin');
 
-// --- ADD THE LOGIN ROUTE HERE ---
+// Login Route
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        // 1. Check if admin exists (check by username OR email)
+        // Find admin by username or email
         const admin = await Admin.findOne({ 
             $or: [{ username: username }, { email: username }] 
         });
@@ -20,20 +20,19 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: 'Invalid Credentials' });
         }
 
-        // 2. Compare password
+        // Check password
         const isMatch = await bcrypt.compare(password, admin.password);
         if (!isMatch) {
             return res.status(400).json({ message: 'Invalid Credentials' });
         }
 
-        // 3. Create JWT Token
+        // Create Token
         const token = jwt.sign(
             { id: admin._id, role: admin.role },
             process.env.JWT_SECRET,
             { expiresIn: '1d' }
         );
 
-        // 4. Send response back to frontend
         res.json({
             token,
             username: admin.username,
@@ -42,12 +41,12 @@ router.post('/login', async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error);
+        console.error("Login error:", error);
         res.status(500).json({ message: 'Server error' });
     }
 });
 
-// Verification Route (Keep this for the admin panel protection)
+// Verification Route
 router.get('/verify', authMiddleware, async (req, res) => {
     try {
         const admin = await Admin.findById(req.user.id).select('-password');
