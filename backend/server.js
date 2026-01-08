@@ -8,32 +8,12 @@ const connectDB = require("./config/db");
 const app = express();
 
 // Middleware
-// ===== CORS CONFIG =====
-const allowedOrigins = [
-  "https://capridigital.vercel.app"
-];
-
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Allow server-to-server calls or tools like Postman
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-
-// Preflight requests
-app.options("*", cors());
-
+app.use(cors({
+  // This pulls the Vercel link you just added to Render's Env Vars
+  origin: process.env.FRONTEND_URL, 
+  credentials: true
+}));
+app.use(express.json());
 
 // Routes
 app.use("/api/products", require("./routes/productRoutes"));
