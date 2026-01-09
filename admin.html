@@ -3,9 +3,8 @@
 <head>
 
     <script>
-    // Immediate check before page renders
-    const token = localStorage.getItem('adminToken');
-    if (!token) {
+    // Immediate session check
+    if (!sessionStorage.getItem('adminToken')) {
         window.location.href = 'admin-login.html';
     }
 </script>

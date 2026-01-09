@@ -148,48 +148,35 @@ function removeImageInput(btn) {
 fetchProducts();
 
 
-// Add this to the top of your Admin.js file
 
-// Admin.js
+
+// Admin.js function to verify admin session in admin.html
 async function verifyAdmin() {
-    const token = localStorage.getItem('adminToken');
+    // CHANGE THIS: Look in sessionStorage
+    const token = sessionStorage.getItem('adminToken');
     
-    // 1. If no token, don't even try to fetch, just redirect
     if (!token) {
         window.location.href = 'admin-login.html';
         return;
     }
 
     try {
-        const response = await fetch(`https://java-web-gyfu.onrender.com/api/auth/verify`, {
+        const response = await fetch(`${API_URL}/auth/verify`, {
             method: 'GET',
             headers: {
-                // IMPORTANT: Ensure there is a space after 'Bearer'
-                'Authorization': 'Bearer ' + token, 
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         });
 
-        if (response.status === 401 || response.status === 403) {
-            console.error("Token is invalid or expired");
-            localStorage.removeItem('adminToken'); // Clear bad token
+        if (!response.ok) {
+            sessionStorage.removeItem('adminToken'); // Clear session
             window.location.href = 'admin-login.html';
             return;
         }
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log("Verified successfully:", data);
         
-        // Initialization functions
-        if (typeof loadProducts === 'function') loadProducts();
-
+        // ... rest of your loadProducts logic
     } catch (error) {
-        console.error('Detailed Auth Error:', error);
-        // Temporarily comment out the line below to stop the "Swift" redirect 
-        // window.location.href = 'admin-login.html'; 
+        window.location.href = 'admin-login.html';
     }
 }

@@ -316,9 +316,21 @@
         const passwordInput = document.getElementById('password');
         
         // Check if already logged in
-        if (localStorage.getItem('adminToken')) {
-            window.location.href = 'admin.html';
-        }
+        if (response.ok) {
+    // CHANGE THIS: Switch from localStorage to sessionStorage
+    sessionStorage.setItem('adminToken', data.token);
+    sessionStorage.setItem('adminInfo', JSON.stringify({
+        username: data.username,
+        email: data.email,
+        role: data.role
+    }));
+    
+    showAlert('Login successful! Redirecting...', 'success');
+    
+    setTimeout(() => {
+        window.location.href = 'admin.html';
+    }, 1000);
+}
         
         // Toggle password visibility
         togglePassword.addEventListener('click', () => {
