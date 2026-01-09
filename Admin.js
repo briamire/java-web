@@ -150,33 +150,36 @@ fetchProducts();
 
 // Add this to the top of your Admin.js file
 
-// Admin.js
-async function verifyAdmin() {
-    const token = sessionStorage.getItem('adminToken');
-    if (!token) {
-        window.location.href = 'admin-login.html';
-        return;
-    }
+// Admin.js for user verification
+// async function verifyAdmin() {
+//     const token = sessionStorage.getItem('adminToken');
+//     if (!token) {
+//         window.location.href = 'admin-login.html';
+//         return;
+//     }
 
-    try {
-        const res = await fetch(VERIFY_URL, {
-            headers: {
-                Authorization: 'Bearer ' + token
-            }
-        });
+//     try {
+//         const res = await fetch(VERIFY_URL, {
+//             headers: {
+//                 Authorization: 'Bearer ' + token
+//             }
+//         });
 
-        if (!res.ok) throw new Error();
-    } catch {
-        sessionStorage.clear();
-        window.location.href = 'admin-login.html';
-    }
+//         if (!res.ok) throw new Error();
+//     } catch {
+//         sessionStorage.clear();
+//         window.location.href = 'admin-login.html';
+//     }
+// }
+
+// function authHeaders() {
+//     return {
+//         "Content-Type": "application/json",
+//         Authorization: "Bearer " + sessionStorage.getItem('adminToken')
+//     };
+// }
+
+// verifyAdmin();
+if (!sessionStorage.getItem('adminToken')) {
+    window.location.href = 'admin-login.html';
 }
-
-function authHeaders() {
-    return {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + sessionStorage.getItem('adminToken')
-    };
-}
-
-verifyAdmin();
