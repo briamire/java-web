@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
 
- 
     <script>
-        // Check session storage before the rest of the page loads
-        if (!sessionStorage.getItem('adminToken')) {
-            window.location.href = 'admin-login.html';
-        }
-    </script>
-
+    // Immediate check before page renders
+    const token = localStorage.getItem('adminToken');
+    if (!token) {
+        window.location.href = 'admin-login.html';
+    }
+</script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -148,54 +148,48 @@ function removeImageInput(btn) {
 fetchProducts();
 
 
+// Add this to the top of your Admin.js file
 
-
-// Admin.js function to verify admin session in admin.html
+// Admin.js
 async function verifyAdmin() {
-    // Look in sessionStorage
-    const token = sessionStorage.getItem('adminToken');
+    const token = localStorage.getItem('adminToken');
     
+    // 1. If no token, don't even try to fetch, just redirect
     if (!token) {
         window.location.href = 'admin-login.html';
         return;
     }
 
     try {
-        const response = await fetch(`${API_URL}/verify`, {
+        const response = await fetch(`https://java-web-gyfu.onrender.com/api/auth/verify`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`,
+                // IMPORTANT: Ensure there is a space after 'Bearer'
+                'Authorization': 'Bearer ' + token, 
                 'Content-Type': 'application/json'
             }
         });
 
-        if (!response.ok) {
-            // Token is invalid/expired - clear session and kick out
-            sessionStorage.removeItem('adminToken');
-            sessionStorage.removeItem('adminInfo');
+        if (response.status === 401 || response.status === 403) {
+            console.error("Token is invalid or expired");
+            localStorage.removeItem('adminToken'); // Clear bad token
             window.location.href = 'admin-login.html';
             return;
         }
-        
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
-        console.log("Verified as:", data.admin.username);
+        console.log("Verified successfully:", data);
         
-        // Success: Continue loading your dashboard data
-        loadProducts();
-        updateStats();
+        // Initialization functions
+        if (typeof loadProducts === 'function') loadProducts();
 
     } catch (error) {
-        console.error('Connection error during verification:', error);
-        // Do not redirect on temporary connection errors unless you want to be strict
+        console.error('Detailed Auth Error:', error);
+        // Temporarily comment out the line below to stop the "Swift" redirect 
+        // window.location.href = 'admin-login.html'; 
     }
-}
-
-// Trigger verification when page loads
-document.addEventListener('DOMContentLoaded', verifyAdmin);
-
-// Update your logout function as well
-function logout() {
-    sessionStorage.removeItem('adminToken');
-    sessionStorage.removeItem('adminInfo');
-    window.location.href = 'admin-login.html';
 }
