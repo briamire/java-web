@@ -316,9 +316,37 @@
         const passwordInput = document.getElementById('password');
         
         // Check if already logged in
-        if (localStorage.getItem('adminToken')) {
-            window.location.href = 'admin.html';
-        }
+        if (sessionStorage.getItem('adminToken')) {
+    window.location.href = 'admin.html';
+}
+
+loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    try {
+        const res = await fetch(`${API_URL}/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: username.value.trim(),
+                password: password.value
+            })
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message);
+
+        // ✅ STORE TOKEN IN SESSION
+        sessionStorage.setItem('adminToken', data.token);
+        sessionStorage.setItem('adminInfo', JSON.stringify(data));
+
+        window.location.href = 'admin.html';
+
+    } catch (err) {
+        alertContainer.textContent = err.message || 'Login failed';
+        alertContainer.className = 'alert alert-danger show';
+    }
+    });
         
         // Toggle password visibility
         togglePassword.addEventListener('click', () => {
