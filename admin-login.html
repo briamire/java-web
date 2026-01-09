@@ -315,14 +315,19 @@
         const togglePassword = document.getElementById('togglePassword');
         const passwordInput = document.getElementById('password');
         
-        // Check if already logged in
-        if (response.ok) {
-    // CHANGE THIS: Switch from localStorage to sessionStorage
+        // --- Place at the start of your script ---
+// If a session already exists, skip login
+if (sessionStorage.getItem('adminToken')) {
+    window.location.href = 'admin.html';
+}
+
+// --- Inside your loginForm.addEventListener submit handler ---
+if (response.ok) {
+    // USE sessionStorage instead of localStorage
     sessionStorage.setItem('adminToken', data.token);
     sessionStorage.setItem('adminInfo', JSON.stringify({
         username: data.username,
-        email: data.email,
-        role: data.role
+        email: data.email
     }));
     
     showAlert('Login successful! Redirecting...', 'success');

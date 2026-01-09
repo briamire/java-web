@@ -152,7 +152,7 @@ fetchProducts();
 
 // Admin.js function to verify admin session in admin.html
 async function verifyAdmin() {
-    // CHANGE THIS: Look in sessionStorage
+    // Look in sessionStorage
     const token = sessionStorage.getItem('adminToken');
     
     if (!token) {
@@ -161,7 +161,7 @@ async function verifyAdmin() {
     }
 
     try {
-        const response = await fetch(`${API_URL}/auth/verify`, {
+        const response = await fetch(`${API_URL}/verify`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -170,13 +170,32 @@ async function verifyAdmin() {
         });
 
         if (!response.ok) {
-            sessionStorage.removeItem('adminToken'); // Clear session
+            // Token is invalid/expired - clear session and kick out
+            sessionStorage.removeItem('adminToken');
+            sessionStorage.removeItem('adminInfo');
             window.location.href = 'admin-login.html';
             return;
         }
         
-        // ... rest of your loadProducts logic
+        const data = await response.json();
+        console.log("Verified as:", data.admin.username);
+        
+        // Success: Continue loading your dashboard data
+        loadProducts();
+        updateStats();
+
     } catch (error) {
-        window.location.href = 'admin-login.html';
+        console.error('Connection error during verification:', error);
+        // Do not redirect on temporary connection errors unless you want to be strict
     }
+}
+
+// Trigger verification when page loads
+document.addEventListener('DOMContentLoaded', verifyAdmin);
+
+// Update your logout function as well
+function logout() {
+    sessionStorage.removeItem('adminToken');
+    sessionStorage.removeItem('adminInfo');
+    window.location.href = 'admin-login.html';
 }
