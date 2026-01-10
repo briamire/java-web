@@ -377,6 +377,7 @@ document.querySelectorAll("[data-dropdown-toggle]").forEach(trigger => {
 });
 
 
+
 //scroll to landing page onpress title
 
 // 1. Get the h1 element using its ID
