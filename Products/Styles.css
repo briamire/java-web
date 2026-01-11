@@ -202,11 +202,13 @@ header {
     visibility: hidden;
     transition: all 0.3s ease;
     z-index: 999;
+    display: block;
 }
 
 .Overlay.active {
     opacity: 1;
     visibility: visible;
+    display: block;
 }
 
 /* Logo */
