@@ -75,13 +75,16 @@ header {
     border: none;
     color: white;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 1rem;  /* CHANGE from 0.5rem to 1rem */
     display: flex;
     flex-direction: column;
     gap: 4px;
     position: relative;
     z-index: 1001;
     margin-right: 0.5rem;
+    min-width: 44px;  /* ADD THIS LINE */
+    min-height: 44px;  /* ADD THIS LINE */
+    -webkit-tap-highlight-color: rgba(255,255,255,0.3);  /* ADD THIS LINE */
 }
 
 .hamburger span {
@@ -202,11 +205,13 @@ header {
     visibility: hidden;
     transition: all 0.3s ease;
     z-index: 999;
+    pointer-events: none;  /* ADD THIS LINE */
 }
 
 .Overlay.active {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;  /* ADD THIS LINE */
 }
 
 /* Logo */
