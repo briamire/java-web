@@ -2465,27 +2465,4 @@ main{
 
 /*.sidebar.active {
     right: 0;
-}
-
-    /* === MOBILE HEADER CLICK FIX === */
-@media (max-width: 768px) {
-
-    header,
-    #header {
-        position: sticky;
-        top: 0;
-        z-index: 9999; /* higher than any menu or overlay */
-    }
-
-    .header-container,
-    .header-content {
-        position: relative;
-        z-index: 9999;
-    }
-
-    /* Prevent invisible layers from blocking clicks */
-    .Sidebar-menu,
-    .dropdown-menu {
-        pointer-events: auto;
-    }
-}
+}    

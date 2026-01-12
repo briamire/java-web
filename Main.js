@@ -19,25 +19,25 @@ document.addEventListener('DOMContentLoaded', () => {
     loadProductsFromBackend(); // Load products from backend
 });
 
-// Load products from backend
-async function loadProductsFromBackend() {
-    try {
-        const response = await fetch(API_URL);
-        if (!response.ok) throw new Error('Failed to fetch products');
+// // Load products from backend
+// async function loadProductsFromBackend() {
+//     try {
+//         const response = await fetch(API_URL);
+//         if (!response.ok) throw new Error('Failed to fetch products');
         
-        products = await response.json();
-        console.log('Loaded products from backend:', products);
+//         products = await response.json();
+//         console.log('Loaded products from backend:', products);
         
-        // Render products if there's a container
-        const container = document.getElementById('products-container');
-        if (container && products.length > 0) {
-            renderProductsToPage(products);
-        }
-    } catch (error) {
-        console.error('Error loading products:', error);
-        showNotification('Failed to load products from backend', 'error');
-    }
-}
+//         // Render products if there's a container
+//         const container = document.getElementById('products-container');
+//         if (container && products.length > 0) {
+//             renderProductsToPage(products);
+//         }
+//     } catch (error) {
+//         console.error('Error loading products:', error);
+//         showNotification('Failed to load products from backend', 'error');
+//     }
+// }
 
 // Render products to the page
 function renderProductsToPage(productsToRender) {
@@ -419,6 +419,22 @@ function setupEventListeners() {
         });
     }
 }
+
+// Dropdown toggle functionality
+document.querySelectorAll('[data-dropdown-toggle]').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const parentLi = toggle.closest('.has-dropdown');
+        parentLi.classList.toggle('open');
+        
+        // Close other dropdowns
+        document.querySelectorAll('.has-dropdown').forEach(item => {
+            if (item !== parentLi) {
+                item.classList.remove('open');
+            }
+        });
+    });
+});
 
 // Add CSS for animations
 const style = document.createElement('style');
