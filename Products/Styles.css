@@ -1,4 +1,4 @@
-Reset and Base Styles
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -2465,4 +2465,4 @@ main{
 
 /*.sidebar.active {
     right: 0;
-}    
+}
