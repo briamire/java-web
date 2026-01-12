@@ -210,9 +210,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeHPSearch();
 });
 
-
-//search bar functionality in products
-
 //search bar functionality in products
 
 document.addEventListener('DOMContentLoaded', () => {
