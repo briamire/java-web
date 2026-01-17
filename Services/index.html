@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - IT Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f7fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #667eea;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+
+        .contact-section {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            margin-top: 3rem;
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .contact-section p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Our IT Services</h1>
+        <p>Comprehensive technology solutions tailored to your business needs</p>
+    </header>
+
+    <div class="container">
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>IT Consulting</h3>
+                <p>Strategic technology guidance to help your business leverage the latest innovations and optimize IT infrastructure.</p>
+                <ul class="service-features">
+                    <li>Technology assessment & planning</li>
+                    <li>Digital transformation strategy</li>
+                    <li>IT budget optimization</li>
+                    <li>Vendor management</li>
+                </ul>
+                <a href="#contact" class="cta-button">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h3>Cybersecurity Solutions</h3>
+                <p>Protect your business with enterprise-grade security solutions and proactive threat management.</p>
+                <ul class="service-features">
+                    <li>Security audits & assessments</li>
+                    <li>Firewall & endpoint protection</li>
+                    <li>Data encryption & backup</li>
+                    <li>Compliance management</li>
+                </ul>
+                <a href="#contact" class="cta-button">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">☁️</div>
+                <h3>Cloud Services</h3>
+                <p>Seamlessly migrate and manage your infrastructure in the cloud with our expert support.</p>
+                <ul class="service-features">
+                    <li>Cloud migration & deployment</li>
+                    <li>Infrastructure as a Service (IaaS)</li>
+                    <li>Cloud backup & disaster recovery</li>
+                    <li>Multi-cloud management</li>
+                </ul>
+                <a href="#contact" class="cta-button">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Managed IT Support</h3>
+                <p>24/7 technical support and proactive maintenance to keep your systems running smoothly.</p>
+                <ul class="service-features">
+                    <li>Help desk & remote support</li>
+                    <li>System monitoring & maintenance</li>
+                    <li>Hardware & software management</li>
+                    <li>Network administration</li>
+                </ul>
+                <a href="#contact" class="cta-button">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3>Network Infrastructure</h3>
+                <p>Design, implement, and optimize robust network solutions for reliable connectivity.</p>
+                <ul class="service-features">
+                    <li>Network design & installation</li>
+                    <li>Wireless solutions (Wi-Fi 6/6E)</li>
+                    <li>VPN & remote access</li>
+                    <li>Performance optimization</li>
+                </ul>
+                <a href="#contact" class="cta-button">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Data Analytics & BI</h3>
+                <p>Transform your data into actionable insights with advanced analytics and reporting tools.</p>
+                <ul class="service-features">
+                    <li>Business intelligence dashboards</li>
+                    <li>Data warehousing solutions</li>
+                    <li>Predictive analytics</li>
+                    <li>Custom reporting tools</li>
+                </ul>
+                <a href="#contact" class="cta-button">Learn More</a>
+            </div>
+        </div>
+
+        <div class="contact-section" id="contact">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today to discuss how our IT services can transform your business</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <span>+254 (745) 933-132 / +254 (758) 497-352
+</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <span>capridigitalsolutions@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💬</div>
+                    <span>Live Chat Available</span>
+                </div>
+            </div>
+            <div style="margin-top: 2rem;">
+                <a href="#" class="cta-button" style="font-size: 1.1rem; padding: 1rem 2rem;">Request a Consultation</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy;  2026 Capridigitalsolutions. All rights reserved.</p>
+    </footer>
+</body>
+</html>
