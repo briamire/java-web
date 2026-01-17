@@ -114,7 +114,15 @@
             
             <nav class="main-nav">
                 <a href="/">Home</a>
-                <a href="/Products/">Products</a>
+               <div class="nav-dropdown">
+                    <a href="/Products/" class="nav-dropdown-toggle">
+                        Products <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="/Products/">Brand New</a>
+                        <a href="/exuk/">Ex-UK</a>
+                    </div>
+                </div>
                 <a href="../Services/">Services</a>
                 <a href="/#about">About</a>
                 <a href="/#contact">Contact</a>
@@ -171,6 +179,34 @@
  
     </div>
 
-    <script src="../products.js"></script>
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-sidebar" id="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-content" id="cart-items">           
+        </div>
+        <div class="sidebar-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">ksh 0.00</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkout-btn">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>  
+
+    
+    <!-- Overlay -->
+    <div id="overlay" class="overlay"></div>
+
+    <script src="Main.js"></script>
+    <script src="Admin.js"></script>
+    <script src="products.js"></script>
+    <script src="api.js"></script>
 </body>
 </html>
