@@ -20,6 +20,72 @@
             background: #f5f7fa;
         }
 
+        /* Navigation Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            cursor: pointer;
+        }
+
+        .nav-dropdown-toggle i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-toggle i {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 150px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            margin-top: 0.5rem;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-dropdown-menu a:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+
+        .nav-dropdown-menu a:last-child {
+            border-radius: 0 0 8px 8px;
+        }
+
+        .nav-dropdown-menu a:hover {
+            background: #f5f7fa;
+            color: #667eea;
+        }
+
         /* Hero Section for Services */
         .services-hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -293,7 +359,15 @@
 
             <nav class="main-nav">
                 <a href="/">Home</a>
-                <a href="/Products/">Products</a>
+                <div class="nav-dropdown">
+                    <a href="/Products/" class="nav-dropdown-toggle">
+                        Products <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="/Products/?condition=brand-new">Brand New</a>
+                        <a href="/Products/?condition=ex-uk">Ex-UK</a>
+                    </div>
+                </div>
                 <a href="/Services/">Services</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
