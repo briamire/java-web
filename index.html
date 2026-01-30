@@ -789,7 +789,7 @@
     <!-- Overlay -->
     <div id="overlay" class="overlay"></div>
 
-    <script>
+ <script>
 // ===== CART FUNCTIONALITY FOR HOMEPAGE =====
 (function() {
     // Check if cart functionality already exists
@@ -867,11 +867,9 @@
         
         if (cartCountElement) {
             cartCountElement.textContent = cartCount;
-            
-            // Add pop animation
-            cartCountElement.classList.add('pop-animation');
+            cartCountElement.style.transform = 'scale(1.3)';
             setTimeout(() => {
-                cartCountElement.classList.remove('pop-animation');
+                cartCountElement.style.transform = 'scale(1)';
             }, 300);
         }
         
@@ -983,24 +981,7 @@
 })();
 </script>
 
-<style>
-/* Add animation for cart count badge */
-.badge.pop-animation {
-    animation: popBadge 0.3s ease;
-}
 
-@keyframes popBadge {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.4);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-</style>
 
 
 
