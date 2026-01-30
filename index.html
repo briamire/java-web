@@ -328,132 +328,129 @@
         <!-- Featured Products Grid -->
         <div class="featured-products-grid">
             
-            <!-- Product Card 1 -->
-            <div class="featured-card" data-category="sale" onclick="toggleWishlist(this, 'ROG Strix Gaming Laptop - 17 inch 144Hz  ',  129999, 'Images/product1.jpg')">
-                <div class="featured-badge">-30% OFF</div>
-                <button class="featured-wishlist-btn">
-                    <i class="far fa-heart"></i>
-                </button>
-                <div class="featured-image">
-                    <img src="Images/ROG Strix Gaming Laptop  17 144Hz.jpg" alt="Gaming Laptop">
-                </div>
-                <div class="featured-content">
-                    <div class="featured-category">Laptops</div>
-                    <h3 class="featured-title">ROG Strix Gaming Laptop - 17" 144Hz</h3>
-                    <div class="featured-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span class="rating-count">(324)</span>
-                    </div>
-                    <div class="featured-footer">
-                        <div class="featured-price">
-                            <span class="current-price">Ksh 129,999</span>
-                            <span class="original-price">Ksh 179,999</span>
-                        </div>
-                        <button class="featured-cart-btn">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product Card 2 -->
-            <div class="featured-card" data-category="sale" onclick="toggleWishlist(this, 'Premium Noise Cancelling Headphones',  19999, 'Images/Premium Noise Cancelling Headphones.jpg')">
-                <div class="featured-badge hot">HOT</div>
-                <button class="featured-wishlist-btn">
-                    <i class="far fa-heart"></i>
-                </button>
-                <div class="featured-image">
-                    <img src="Images/Premium Noise Cancelling Headphones.jpg" alt="Wireless Headphones">
-                </div>
-                <div class="featured-content">
-                    <div class="featured-category">Audio</div>
-                    <h3 class="featured-title">Premium Noise Cancelling Headphones</h3>
-                    <div class="featured-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span class="rating-count">(512)</span>
-                    </div>
-                    <div class="featured-footer">
-                        <div class="featured-price">
-                            <span class="current-price">Ksh 19,999</span>
-                        </div>
-                        <button class="featured-cart-btn">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product Card 3 -->
-           <div class="featured-card" data-category="sale" onclick="toggleWishlist(this, 'RGB Mechanical Gaming Keyboard',  14999, 'Images/RGB Mechanical Gaming Keyboard.jpg')">
-                <div class="featured-badge new">NEW</div>
-                <button class="featured-wishlist-btn">
-                    <i class="far fa-heart"></i>
-                </button>
-
-                <div class="featured-image">
-                    <img src="Images/RGB Mechanical Gaming Keyboard.jpg" alt="Mechanical Keyboard">
-                </div>
-                <div class="featured-content">
-                    <div class="featured-category">Keyboards</div>
-                    <h3 class="featured-title">RGB Mechanical Gaming Keyboard</h3>
-                    <div class="featured-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <span class="rating-count">(428)</span>
-                    </div>
-                    <div class="featured-footer">
-                        <div class="featured-price">
-                            <span class="current-price">Ksh 14,999</span>
-                        </div>
-                        <button class="featured-cart-btn">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product Card 4 -->
-            <div class="featured-card" data-category="sale" onclick="toggleWishlist(this, '4K Ultra HD Monitor 32 - 144Hz',  59999, 'Images/4K Ultra HD Monitor 32 - 144Hz.jpg')">
-                <button class="featured-wishlist-btn">
-                    <i class="far fa-heart"></i>
-                </button>
-                <div class="featured-image">
-                    <img src="Images/4K Ultra HD Monitor 32 - 144Hz.jpg" alt="4K Monitor">
-                </div>
-                <div class="featured-content">
-                    <div class="featured-category">Monitors</div>
-                    <h3 class="featured-title">4K Ultra HD Monitor 32" - 144Hz</h3>
-                    <div class="featured-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span class="rating-count">(256)</span>
-                    </div>
-                    <div class="featured-footer">
-                        <div class="featured-price">
-                            <span class="current-price">Ksh 59,999</span>
-                        </div>
-                        <button class="featured-cart-btn">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
+           <!-- Product Card 1 -->
+<div class="featured-card" data-category="sale" data-product-id="1">
+    <div class="featured-badge">-30% OFF</div>
+    <button class="featured-wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this, 'ROG Strix Gaming Laptop - 17 inch 144Hz', 129999, 'Images/ROG Strix Gaming Laptop  17 144Hz.jpg')">
+        <i class="far fa-heart"></i>
+    </button>
+    <div class="featured-image">
+        <img src="Images/ROG Strix Gaming Laptop  17 144Hz.jpg" alt="Gaming Laptop" class="featured-product-img">
+    </div>
+    <div class="featured-content">
+        <div class="featured-category">Laptops</div>
+        <h3 class="featured-title featured-product-name">ROG Strix Gaming Laptop - 17" 144Hz</h3>
+        <div class="featured-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <span class="rating-count">(324)</span>
         </div>
+        <div class="featured-footer">
+            <div class="featured-price">
+                <span class="current-price featured-product-price">129999</span>
+                <span class="original-price">Ksh 179,999</span>
+            </div>
+            <button class="featured-cart-btn" onclick="event.stopPropagation();">
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Product Card 2 -->
+<div class="featured-card" data-category="sale" data-product-id="2">
+    <div class="featured-badge hot">HOT</div>
+    <button class="featured-wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this, 'Premium Noise Cancelling Headphones', 19999, 'Images/Premium Noise Cancelling Headphones.jpg')">
+        <i class="far fa-heart"></i>
+    </button>
+    <div class="featured-image">
+        <img src="Images/Premium Noise Cancelling Headphones.jpg" alt="Wireless Headphones" class="featured-product-img">
+    </div>
+    <div class="featured-content">
+        <div class="featured-category">Audio</div>
+        <h3 class="featured-title featured-product-name">Premium Noise Cancelling Headphones</h3>
+        <div class="featured-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span class="rating-count">(512)</span>
+        </div>
+        <div class="featured-footer">
+            <div class="featured-price">
+                <span class="current-price featured-product-price">19999</span>
+            </div>
+            <button class="featured-cart-btn" onclick="event.stopPropagation();">
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Product Card 3 -->
+<div class="featured-card" data-category="sale" data-product-id="3">
+    <div class="featured-badge new">NEW</div>
+    <button class="featured-wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this, 'RGB Mechanical Gaming Keyboard', 14999, 'Images/RGB Mechanical Gaming Keyboard.jpg')">
+        <i class="far fa-heart"></i>
+    </button>
+    <div class="featured-image">
+        <img src="Images/RGB Mechanical Gaming Keyboard.jpg" alt="Mechanical Keyboard" class="featured-product-img">
+    </div>
+    <div class="featured-content">
+        <div class="featured-category">Keyboards</div>
+        <h3 class="featured-title featured-product-name">RGB Mechanical Gaming Keyboard</h3>
+        <div class="featured-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <span class="rating-count">(428)</span>
+        </div>
+        <div class="featured-footer">
+            <div class="featured-price">
+                <span class="current-price featured-product-price">14999</span>
+            </div>
+            <button class="featured-cart-btn" onclick="event.stopPropagation();">
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Product Card 4 -->
+<div class="featured-card" data-category="sale" data-product-id="4">
+    <button class="featured-wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this, '4K Ultra HD Monitor 32 - 144Hz', 59999, 'Images/4K Ultra HD Monitor 32 - 144Hz.jpg')">
+        <i class="far fa-heart"></i>
+    </button>
+    <div class="featured-image">
+        <img src="Images/4K Ultra HD Monitor 32 - 144Hz.jpg" alt="4K Monitor" class="featured-product-img">
+    </div>
+    <div class="featured-content">
+        <div class="featured-category">Monitors</div>
+        <h3 class="featured-title featured-product-name">4K Ultra HD Monitor 32" - 144Hz</h3>
+        <div class="featured-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <span class="rating-count">(256)</span>
+        </div>
+        <div class="featured-footer">
+            <div class="featured-price">
+                <span class="current-price featured-product-price">59999</span>
+            </div>
+            <button class="featured-cart-btn" onclick="event.stopPropagation();">
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+        </div>
+    </div>
+</div>
 
         <!-- View All Button -->
         <div class="featured-view-all">
@@ -791,6 +788,221 @@
    
     <!-- Overlay -->
     <div id="overlay" class="overlay"></div>
+
+    <script>
+// ===== CART FUNCTIONALITY FOR HOMEPAGE =====
+(function() {
+    // Check if cart functionality already exists
+    if (typeof window.addToCart !== 'undefined') {
+        // If addToCart already exists, just attach listeners to featured cart buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            attachFeaturedCartListeners();
+        });
+        return;
+    }
+
+    let cart = [];
+
+    // Load cart from localStorage on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        loadCart();
+        attachFeaturedCartListeners();
+    });
+
+    // Attach listeners to featured cart buttons
+    function attachFeaturedCartListeners() {
+        const cartButtons = document.querySelectorAll('.featured-cart-btn');
+        
+        cartButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const productCard = this.closest('.featured-card');
+                const productId = productCard.dataset.productId;
+                const productName = productCard.querySelector('.featured-product-name').textContent.trim();
+                const productPriceText = productCard.querySelector('.featured-product-price').textContent.trim();
+                const productPrice = parseFloat(productPriceText.replace(/[^0-9]/g, ''));
+                const productImage = productCard.querySelector('.featured-product-img').src;
+                
+                addToCart(productId, productName, productPrice, productImage);
+            });
+        });
+    }
+
+    // Load cart from localStorage
+    function loadCart() {
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+            cart = JSON.parse(savedCart);
+            updateCartUI();
+        }
+    }
+
+    // Add item to cart
+    function addToCart(productId, productName, productPrice, productImage) {
+        const existingItem = cart.find(item => item.id === productId);
+        
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({
+                id: productId,
+                name: productName,
+                price: productPrice,
+                image: productImage,
+                quantity: 1
+            });
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartUI();
+        showCartFeedback('Item added to cart!');
+    }
+
+    // Update cart count and display
+    function updateCartUI() {
+        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+        const cartCountElement = document.getElementById('cart-count');
+        
+        if (cartCountElement) {
+            cartCountElement.textContent = cartCount;
+            
+            // Add pop animation
+            cartCountElement.classList.add('pop-animation');
+            setTimeout(() => {
+                cartCountElement.classList.remove('pop-animation');
+            }, 300);
+        }
+        
+        updateCartTotal();
+        displayCartItems();
+    }
+
+    // Display cart items in sidebar
+    function displayCartItems() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        
+        if (!cartItemsContainer) return;
+        
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p style="text-align: center; padding: 20px; color: #666;">Your cart is empty</p>';
+            return;
+        }
+        
+        cartItemsContainer.innerHTML = cart.map(item => `
+            <div class="cart-item" data-product-id="${item.id}">
+                <img src="${item.image}" alt="${item.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                <div class="cart-item-details" style="flex: 1; margin-left: 12px;">
+                    <h4 style="font-size: 14px; margin: 0 0 5px 0;">${item.name}</h4>
+                    <p style="color: #e74c3c; font-weight: bold; margin: 0;">Ksh ${item.price.toLocaleString()}</p>
+                    <div class="quantity-controls" style="display: flex; align-items: center; gap: 10px; margin-top: 8px;">
+                        <button onclick="window.updateCartQuantity('${item.id}', -1)" style="width: 25px; height: 25px; border: none; background: #f0f0f0; border-radius: 4px; cursor: pointer;">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="window.updateCartQuantity('${item.id}', 1)" style="width: 25px; height: 25px; border: none; background: #f0f0f0; border-radius: 4px; cursor: pointer;">+</button>
+                    </div>
+                </div>
+                <button onclick="window.removeFromCart('${item.id}')" style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 18px;">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        `).join('');
+    }
+
+    // Update quantity
+    window.updateCartQuantity = function(productId, change) {
+        const item = cart.find(item => item.id === productId);
+        
+        if (item) {
+            item.quantity += change;
+            
+            if (item.quantity <= 0) {
+                window.removeFromCart(productId);
+            } else {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartUI();
+            }
+        }
+    }
+
+    // Remove item from cart
+    window.removeFromCart = function(productId) {
+        cart = cart.filter(item => item.id !== productId);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartUI();
+        showCartFeedback('Item removed from cart');
+    }
+
+    // Update cart total
+    function updateCartTotal() {
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const cartTotalElement = document.getElementById('cart-total');
+        
+        if (cartTotalElement) {
+            cartTotalElement.textContent = `Ksh ${total.toLocaleString()}`;
+        }
+    }
+
+    // Show cart feedback notification
+    function showCartFeedback(message) {
+        let feedback = document.querySelector('.cart-feedback');
+        
+        if (!feedback) {
+            feedback = document.createElement('div');
+            feedback.className = 'cart-feedback';
+            feedback.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: #27ae60;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                opacity: 0;
+                transform: translateX(400px);
+                transition: all 0.3s ease;
+                z-index: 10000;
+                font-weight: 500;
+            `;
+            document.body.appendChild(feedback);
+        }
+        
+        feedback.textContent = message;
+        feedback.style.opacity = '1';
+        feedback.style.transform = 'translateX(0)';
+        
+        setTimeout(() => {
+            feedback.style.opacity = '0';
+            feedback.style.transform = 'translateX(400px)';
+        }, 2000);
+    }
+
+    // Make addToCart available globally in case other scripts need it
+    window.addToCart = addToCart;
+})();
+</script>
+
+<style>
+/* Add animation for cart count badge */
+.badge.pop-animation {
+    animation: popBadge 0.3s ease;
+}
+
+@keyframes popBadge {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+</style>
+
+
 
     <script type="module">
   // Import the functions you need from the SDKs you need
